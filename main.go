@@ -8,5 +8,7 @@ func main()  {
 	// 队列测试
 	//linear.ArrayQueueTest()
 	// 环形队列测试
-	linear.ArrayCircularQueueTest()
+	//linear.ArrayCircularQueueTest()
+	// 单链表测试
+	linear.SingleLinkedListTest()
 }
