@@ -10,5 +10,7 @@ func main()  {
 	// 环形队列测试
 	//linear.ArrayCircularQueueTest()
 	// 单链表测试
-	linear.SingleLinkedListTest()
+	//linear.SingleLinkedListTest()
+	// 双链表测试
+	linear.TwoWayLinkedListTest()
 }

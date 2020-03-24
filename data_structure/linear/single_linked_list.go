@@ -37,11 +37,11 @@ func SingleLinkedListTest()  {
 		case 2:
 			var id int
 			fmt.Scanf("%d",&id)
-			singleLinkedList.addNode(&SingleLinkedListNode{Id:id,Data:rand.Int()})
+			singleLinkedList.addNode(&SingleLinkedListNode{id: id, data:rand.Int()})
 		case 3:
 			var id int
 			fmt.Scanf("%d",&id)
-			singleLinkedList.addOrderNode(&SingleLinkedListNode{Id:id,Data:rand.Int()})
+			singleLinkedList.addOrderNode(&SingleLinkedListNode{id: id, data:rand.Int()})
 		case 4:
 			var id int
 			fmt.Scanf("%d",&id)
@@ -49,7 +49,7 @@ func SingleLinkedListTest()  {
 		case 5:
 			var id int
 			fmt.Scanf("%d",&id)
-			singleLinkedList.modifyNode(&SingleLinkedListNode{Id:id,Data:rand.Int()})
+			singleLinkedList.modifyNode(&SingleLinkedListNode{id: id, data:rand.Int()})
 		case 6:
 			var id int
 			fmt.Scanf("%d",&id)
@@ -57,10 +57,10 @@ func SingleLinkedListTest()  {
 			if node==nil {
 				fmt.Println("没有找到这个节点")
 			}else{
-				fmt.Println("[",node.Id,"]=",node.Data)
+				fmt.Println("[",node.id,"]=",node.data)
 			}
 		case 7:
-			fmt.Println(singleLinkedList.Length)
+			fmt.Println(singleLinkedList.getLength())
 		case 8:
 			loop = false
 		}
@@ -68,26 +68,33 @@ func SingleLinkedListTest()  {
 }
 
 type SingleLinkedListNode struct {
-	Id int
-	Data int
+	id   int
+	data int
 	next *SingleLinkedListNode
 }
 
 type SingleLinkedList struct {
-	Length uint
-	next *SingleLinkedListNode
+	length uint
+	next   *SingleLinkedListNode
 }
 
+// 初始化链表
 func (singleLinkedList *SingleLinkedList)init()  {
 	singleLinkedList.next = &SingleLinkedListNode{
-		Id:   0,
-		Data: 0,
+		id:   0,
+		data: 0,
 		next: nil,
 	}
 }
 
+// 得到长度
+func (singleLinkedList *SingleLinkedList)getLength() uint {
+	return singleLinkedList.length
+}
+
+// 增加节点
 func (singleLinkedList *SingleLinkedList)addNode(node *SingleLinkedListNode)  {
-	if singleLinkedList.getNode(node.Id) != nil{
+	if singleLinkedList.getNode(node.id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -99,13 +106,13 @@ func (singleLinkedList *SingleLinkedList)addNode(node *SingleLinkedListNode)  {
 		temp = temp.next
 	}
 	temp.next = node
-	singleLinkedList.Length++
+	singleLinkedList.length++
 }
 
 // 增加有序节点
 func (singleLinkedList *SingleLinkedList)addOrderNode(node *SingleLinkedListNode)  {
 	// 判断是否已经存在
-	if singleLinkedList.getNode(node.Id) != nil{
+	if singleLinkedList.getNode(node.id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -113,7 +120,7 @@ func (singleLinkedList *SingleLinkedList)addOrderNode(node *SingleLinkedListNode
 	temp := singleLinkedList.next
 	// 在链表中找到比当前需要插入的节点ID小的节点
 	for{
-		if temp.next == nil || temp.next.Id > node.Id{
+		if temp.next == nil || temp.next.id > node.id {
 			break
 		}
 		temp = temp.next
@@ -121,7 +128,7 @@ func (singleLinkedList *SingleLinkedList)addOrderNode(node *SingleLinkedListNode
 	// 插入节点
 	node.next = temp.next
 	temp.next = node
-	singleLinkedList.Length++
+	singleLinkedList.length++
 }
 
 // 删除节点
@@ -130,7 +137,7 @@ func (singleLinkedList *SingleLinkedList)deleteNode(id int)  {
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
 	for{
-		if temp.next == nil || temp.next.Id == id{
+		if temp.next == nil || temp.next.id == id{
 			break
 		}
 		temp = temp.next
@@ -138,7 +145,7 @@ func (singleLinkedList *SingleLinkedList)deleteNode(id int)  {
 	// 判断下一个节点是否为空
 	if temp.next != nil{
 		temp.next = temp.next.next
-		singleLinkedList.Length--
+		singleLinkedList.length--
 	}
 }
 
@@ -148,7 +155,7 @@ func (singleLinkedList *SingleLinkedList)modifyNode(node *SingleLinkedListNode) 
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
 	for{
-		if temp.next == nil || temp.next.Id == node.Id{
+		if temp.next == nil || temp.next.id == node.id {
 			break
 		}
 		temp = temp.next
@@ -167,7 +174,7 @@ func (singleLinkedList *SingleLinkedList)getNode(id int) *SingleLinkedListNode {
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
 	for{
-		if temp.next == nil || temp.next.Id==id{
+		if temp.next == nil || temp.next.id ==id{
 			break
 		}
 		temp = temp.next
@@ -178,7 +185,7 @@ func (singleLinkedList *SingleLinkedList)getNode(id int) *SingleLinkedListNode {
 // 打印链表
 func (singleLinkedList *SingleLinkedList)printLinkedList(){
 	// 判断链表是否为空
-	if singleLinkedList.Length <= 0{
+	if singleLinkedList.length <= 0{
 		fmt.Println("LinkedList is empty!")
 		return
 	}
@@ -190,7 +197,7 @@ func (singleLinkedList *SingleLinkedList)printLinkedList(){
 			break
 		}
 		temp = temp.next
-		fmt.Print("[",temp.Id,"]=",temp.Data," ")
+		fmt.Print("[",temp.id,"]=",temp.data," ")
 	}
 	fmt.Println()
 }

@@ -21,16 +21,16 @@ func SparseMatrixTest()  {
 		arg[i] = sourceMatrix[i][:]
 	}
 	fmt.Println("打印原始矩阵")
-	printMatrix(arg)
-	sparseMatrix := convertToSparseMatrix(arg)
+	PrintMatrix(arg)
+	sparseMatrix := ConvertToSparseMatrix(arg)
 	fmt.Println("打印稀疏矩阵")
-	printMatrix(sparseMatrix)
+	PrintMatrix(sparseMatrix)
 	fmt.Println("打印从稀疏矩阵中恢复的原始矩阵")
-	printMatrix(restoreMatrixFromSparseMatrix(sparseMatrix))
+	PrintMatrix(RestoreMatrixFromSparseMatrix(sparseMatrix))
 }
 
 /* 把原始矩阵转换为稀疏矩阵 */
-func convertToSparseMatrix(sourceMatrix [][]int) [][]int  {
+func ConvertToSparseMatrix(sourceMatrix [][]int) [][]int  {
 	// validData记录矩阵的有效数据个数
 	var validData int
 	// 遍历矩阵获取有效数据的个数
@@ -72,7 +72,7 @@ func convertToSparseMatrix(sourceMatrix [][]int) [][]int  {
 }
 
 /* 把稀疏矩阵恢复为原始矩阵 */
-func restoreMatrixFromSparseMatrix(sparseMatrix [][]int)[][]int{
+func RestoreMatrixFromSparseMatrix(sparseMatrix [][]int)[][]int{
 	// 从稀疏矩阵中获取原始矩阵行数并初始化
 	sourceMatrix := make([][]int,sparseMatrix[0][0])
 	// 初始化每一行
@@ -88,7 +88,7 @@ func restoreMatrixFromSparseMatrix(sparseMatrix [][]int)[][]int{
 }
 
 /* 打印矩阵 */
-func printMatrix(matrix [][]int)  {
+func PrintMatrix(matrix [][]int)  {
 	for _,v:= range matrix{
 		fmt.Println(v)
 	}
