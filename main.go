@@ -1,6 +1,6 @@
 package main
 
-import "anydevelop.cn/algorithm/other"
+import "anydevelop.cn/data_structure/linear"
 
 func main()  {
 	// 稀疏矩阵测试
@@ -16,5 +16,7 @@ func main()  {
 	// 循环链表测试
 	//linear.CircularLinkedListTest()
 	// 约瑟夫圆形测试
-	other.JosephusTest()
+	//other.JosephusTest()
+	// 栈测试
+	linear.ArrayStackTest()
 }

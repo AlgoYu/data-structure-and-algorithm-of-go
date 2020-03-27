@@ -28,7 +28,7 @@ type Josephus struct {
 }
 
 // 增加节点
-func (josephus *Josephus) addNode(node *People) {
+func (josephus *Josephus) AddNode(node *People) {
 	if josephus.next == nil{
 		josephus.next = node
 		josephus.next.next = josephus.next
@@ -48,7 +48,7 @@ func (josephus *Josephus) addNode(node *People) {
 }
 
 // 打印节点
-func (josephus *Josephus) printLinkedList() {
+func (josephus *Josephus) PrintLinkedList() {
 	if josephus.length <= 0{
 		fmt.Println("LinkedList is empty!")
 		return
@@ -67,7 +67,7 @@ func (josephus *Josephus) printLinkedList() {
 }
 
 // 打印约瑟夫圆形
-func (josephus *Josephus) printJosephusCircular(start,count int) {
+func (josephus *Josephus) PrintJosephusCircular(start,count int) {
 	if josephus.length <= 1{
 		return
 	}
@@ -122,16 +122,16 @@ func JosephusTest()  {
 		fmt.Scanf("%d", &input)
 		switch input {
 		case 1:
-			josephus.printLinkedList()
+			josephus.PrintLinkedList()
 		case 2:
 			var id int
 			fmt.Scanf("%d",&id)
-			josephus.addNode(&People{id: id, data:rand.Int()})
+			josephus.AddNode(&People{id: id, data:rand.Int()})
 		case 3:
 			var start,count int
 			fmt.Scanf("%d", &start)
 			fmt.Scanf("%d", &count)
-			josephus.printJosephusCircular(start,count)
+			josephus.PrintJosephusCircular(start,count)
 		case 4:
 			loop = false
 		}

@@ -15,7 +15,7 @@ import (
 func SingleLinkedListTest()  {
 	loop := true
 	singleLinkedList := new(SingleLinkedList)
-	singleLinkedList.init()
+	singleLinkedList.Init()
 	rand.Seed(6666)
 	for{
 		if !loop{
@@ -33,34 +33,34 @@ func SingleLinkedListTest()  {
 		fmt.Scanf("%d", &input)
 		switch input {
 		case 1:
-			singleLinkedList.printLinkedList()
+			singleLinkedList.PrintLinkedList()
 		case 2:
 			var id int
 			fmt.Scanf("%d",&id)
-			singleLinkedList.addNode(&SingleLinkedListNode{id: id, data:rand.Int()})
+			singleLinkedList.AddNode(&SingleLinkedListNode{id: id, data:rand.Int()})
 		case 3:
 			var id int
 			fmt.Scanf("%d",&id)
-			singleLinkedList.addOrderNode(&SingleLinkedListNode{id: id, data:rand.Int()})
+			singleLinkedList.AddOrderNode(&SingleLinkedListNode{id: id, data:rand.Int()})
 		case 4:
 			var id int
 			fmt.Scanf("%d",&id)
-			singleLinkedList.deleteNode(id)
+			singleLinkedList.DeleteNode(id)
 		case 5:
 			var id int
 			fmt.Scanf("%d",&id)
-			singleLinkedList.modifyNode(&SingleLinkedListNode{id: id, data:rand.Int()})
+			singleLinkedList.ModifyNode(&SingleLinkedListNode{id: id, data:rand.Int()})
 		case 6:
 			var id int
 			fmt.Scanf("%d",&id)
-			node := singleLinkedList.getNode(id)
+			node := singleLinkedList.GetNode(id)
 			if node==nil {
 				fmt.Println("没有找到这个节点")
 			}else{
 				fmt.Println("[",node.id,"]=",node.data)
 			}
 		case 7:
-			fmt.Println(singleLinkedList.getLength())
+			fmt.Println(singleLinkedList.GetLength())
 		case 8:
 			loop = false
 		}
@@ -79,7 +79,7 @@ type SingleLinkedList struct {
 }
 
 // 初始化链表
-func (singleLinkedList *SingleLinkedList)init()  {
+func (singleLinkedList *SingleLinkedList) Init()  {
 	singleLinkedList.next = &SingleLinkedListNode{
 		id:   0,
 		data: 0,
@@ -88,13 +88,13 @@ func (singleLinkedList *SingleLinkedList)init()  {
 }
 
 // 得到长度
-func (singleLinkedList *SingleLinkedList)getLength() uint {
+func (singleLinkedList *SingleLinkedList) GetLength() uint {
 	return singleLinkedList.length
 }
 
 // 增加节点
-func (singleLinkedList *SingleLinkedList)addNode(node *SingleLinkedListNode)  {
-	if singleLinkedList.getNode(node.id) != nil{
+func (singleLinkedList *SingleLinkedList) AddNode(node *SingleLinkedListNode)  {
+	if singleLinkedList.GetNode(node.id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -110,9 +110,9 @@ func (singleLinkedList *SingleLinkedList)addNode(node *SingleLinkedListNode)  {
 }
 
 // 增加有序节点
-func (singleLinkedList *SingleLinkedList)addOrderNode(node *SingleLinkedListNode)  {
+func (singleLinkedList *SingleLinkedList) AddOrderNode(node *SingleLinkedListNode)  {
 	// 判断是否已经存在
-	if singleLinkedList.getNode(node.id) != nil{
+	if singleLinkedList.GetNode(node.id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -132,7 +132,7 @@ func (singleLinkedList *SingleLinkedList)addOrderNode(node *SingleLinkedListNode
 }
 
 // 删除节点
-func (singleLinkedList *SingleLinkedList)deleteNode(id int)  {
+func (singleLinkedList *SingleLinkedList) DeleteNode(id int)  {
 	// 创建指针
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
@@ -150,7 +150,7 @@ func (singleLinkedList *SingleLinkedList)deleteNode(id int)  {
 }
 
 // 修改节点
-func (singleLinkedList *SingleLinkedList)modifyNode(node *SingleLinkedListNode)  {
+func (singleLinkedList *SingleLinkedList) ModifyNode(node *SingleLinkedListNode)  {
 	// 创建指针
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
@@ -169,7 +169,7 @@ func (singleLinkedList *SingleLinkedList)modifyNode(node *SingleLinkedListNode) 
 }
 
 // 得到节点
-func (singleLinkedList *SingleLinkedList)getNode(id int) *SingleLinkedListNode {
+func (singleLinkedList *SingleLinkedList) GetNode(id int) *SingleLinkedListNode {
 	// 创建指针并指定到第一个空节点
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
@@ -183,7 +183,7 @@ func (singleLinkedList *SingleLinkedList)getNode(id int) *SingleLinkedListNode {
 }
 
 // 打印链表
-func (singleLinkedList *SingleLinkedList)printLinkedList(){
+func (singleLinkedList *SingleLinkedList) PrintLinkedList(){
 	// 判断链表是否为空
 	if singleLinkedList.length <= 0{
 		fmt.Println("LinkedList is empty!")

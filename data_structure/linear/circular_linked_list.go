@@ -16,7 +16,7 @@ import (
 func CircularLinkedListTest()  {
 	loop := true
 	circularLinkedList := new(CircularLinkedList)
-	circularLinkedList.init()
+	circularLinkedList.Init()
 	rand.Seed(6666)
 	for{
 		if !loop{
@@ -34,34 +34,34 @@ func CircularLinkedListTest()  {
 		fmt.Scanf("%d", &input)
 		switch input {
 		case 1:
-			circularLinkedList.printLinkedList()
+			circularLinkedList.PrintLinkedList()
 		case 2:
 			var id int
 			fmt.Scanf("%d",&id)
-			circularLinkedList.addNode(&CircularLinkedListNode{id: id, data:rand.Int()})
+			circularLinkedList.AddNode(&CircularLinkedListNode{id: id, data:rand.Int()})
 		case 3:
 			var id int
 			fmt.Scanf("%d",&id)
-			circularLinkedList.addOrderNode(&CircularLinkedListNode{id: id, data:rand.Int()})
+			circularLinkedList.AddOrderNode(&CircularLinkedListNode{id: id, data:rand.Int()})
 		case 4:
 			var id int
 			fmt.Scanf("%d",&id)
-			circularLinkedList.deleteNode(id)
+			circularLinkedList.DeleteNode(id)
 		case 5:
 			var id int
 			fmt.Scanf("%d",&id)
-			circularLinkedList.modifyNode(&CircularLinkedListNode{id: id, data:rand.Int()})
+			circularLinkedList.ModifyNode(&CircularLinkedListNode{id: id, data:rand.Int()})
 		case 6:
 			var id int
 			fmt.Scanf("%d",&id)
-			node := circularLinkedList.getNode(id)
+			node := circularLinkedList.GetNode(id)
 			if node==nil {
 				fmt.Println("没有找到这个节点")
 			}else{
 				fmt.Println("[",node.id,"]=",node.data)
 			}
 		case 7:
-			fmt.Println(circularLinkedList.getLength())
+			fmt.Println(circularLinkedList.GetLength())
 		case 8:
 			loop = false
 		}
@@ -80,7 +80,7 @@ type CircularLinkedList struct {
 }
 
 // 初始化链表
-func (circularLinkedList *CircularLinkedList)init()  {
+func (circularLinkedList *CircularLinkedList) Init()  {
 	circularLinkedList.next = &CircularLinkedListNode{
 		id:   0,
 		data: 0,
@@ -90,13 +90,13 @@ func (circularLinkedList *CircularLinkedList)init()  {
 }
 
 // 得到长度
-func (circularLinkedList *CircularLinkedList)getLength() uint {
+func (circularLinkedList *CircularLinkedList) GetLength() uint {
 	return circularLinkedList.length
 }
 
 // 增加节点
-func (circularLinkedList *CircularLinkedList)addNode(node *CircularLinkedListNode)  {
-	if circularLinkedList.getNode(node.id) != nil{
+func (circularLinkedList *CircularLinkedList) AddNode(node *CircularLinkedListNode)  {
+	if circularLinkedList.GetNode(node.id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -113,9 +113,9 @@ func (circularLinkedList *CircularLinkedList)addNode(node *CircularLinkedListNod
 }
 
 // 增加有序节点
-func (circularLinkedList *CircularLinkedList)addOrderNode(node *CircularLinkedListNode)  {
+func (circularLinkedList *CircularLinkedList) AddOrderNode(node *CircularLinkedListNode)  {
 	// 判断是否已经存在
-	if circularLinkedList.getNode(node.id) != nil{
+	if circularLinkedList.GetNode(node.id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -135,7 +135,7 @@ func (circularLinkedList *CircularLinkedList)addOrderNode(node *CircularLinkedLi
 }
 
 // 删除节点
-func (circularLinkedList *CircularLinkedList)deleteNode(id int)  {
+func (circularLinkedList *CircularLinkedList) DeleteNode(id int)  {
 	// 创建指针
 	temp := circularLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
@@ -153,7 +153,7 @@ func (circularLinkedList *CircularLinkedList)deleteNode(id int)  {
 }
 
 // 修改节点
-func (circularLinkedList *CircularLinkedList)modifyNode(node *CircularLinkedListNode)  {
+func (circularLinkedList *CircularLinkedList) ModifyNode(node *CircularLinkedListNode)  {
 	// 创建指针
 	temp := circularLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
@@ -172,7 +172,7 @@ func (circularLinkedList *CircularLinkedList)modifyNode(node *CircularLinkedList
 }
 
 // 得到节点
-func (circularLinkedList *CircularLinkedList)getNode(id int) *CircularLinkedListNode {
+func (circularLinkedList *CircularLinkedList) GetNode(id int) *CircularLinkedListNode {
 	// 创建指针并指定到第一个空节点
 	temp := circularLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
@@ -189,7 +189,7 @@ func (circularLinkedList *CircularLinkedList)getNode(id int) *CircularLinkedList
 }
 
 // 打印链表
-func (circularLinkedList *CircularLinkedList)printLinkedList(){
+func (circularLinkedList *CircularLinkedList) PrintLinkedList(){
 	// 判断链表是否为空
 	if circularLinkedList.length <= 0{
 		fmt.Println("LinkedList is empty!")

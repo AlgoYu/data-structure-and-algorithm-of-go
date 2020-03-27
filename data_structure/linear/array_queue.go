@@ -15,7 +15,7 @@ import (
 func ArrayQueueTest(){
 	loop := true
 	arrayQueue := new(ArrayQueue)
-	arrayQueue.initQueue(5)
+	arrayQueue.InitQueue(5)
 	for{
 		if !loop{
 			break
@@ -29,15 +29,15 @@ func ArrayQueueTest(){
 		fmt.Scanf("%d", &input)
 		switch input {
 		case 1:
-			arrayQueue.printQueue()
+			arrayQueue.PrintQueue()
 		case 2:
 			var data int
 			fmt.Scanf("%d",&data)
-			arrayQueue.addQueue(data)
+			arrayQueue.AddQueue(data)
 		case 3:
-			fmt.Println(arrayQueue.outQueue())
+			fmt.Println(arrayQueue.OutQueue())
 		case 4:
-			fmt.Println(arrayQueue.printCurrentQueueHead())
+			fmt.Println(arrayQueue.PrintCurrentQueueHead())
 		case 5:
 			loop = false
 		}
@@ -57,25 +57,25 @@ type ArrayQueue struct {
 }
 
 // 初始化队列
-func (queue *ArrayQueue) initQueue(size int){
+func (queue *ArrayQueue) InitQueue(size int){
 	queue.size = size
 	queue.queue = make([]int,size)
 	queue.front, queue.tail = -1,-1
 }
 
 // 判断队列是否为空
-func (queue *ArrayQueue) isEmpty()bool{
+func (queue *ArrayQueue) IsEmpty()bool{
 	return queue.front == queue.tail
 }
 
 // 判断队列是否已满
-func (queue *ArrayQueue) isFull()bool{
+func (queue *ArrayQueue) IsFull()bool{
 	return queue.tail+1 >= queue.size
 }
 
 // 加入数据到队列尾部
-func (queue *ArrayQueue) addQueue(data int) {
-	if queue.isFull() {
+func (queue *ArrayQueue) AddQueue(data int) {
+	if queue.IsFull() {
 		fmt.Println("Can't add queue because queue is full")
 		return
 	}
@@ -84,8 +84,8 @@ func (queue *ArrayQueue) addQueue(data int) {
 }
 
 // 从队列头提取数据
-func (queue *ArrayQueue) outQueue()int{
-	if queue.isEmpty(){
+func (queue *ArrayQueue) OutQueue()int{
+	if queue.IsEmpty(){
 		panic("Can't add queue because queue is full")
 	}
 	queue.front++
@@ -93,15 +93,15 @@ func (queue *ArrayQueue) outQueue()int{
 }
 
 // 打印当前队列头部
-func (queue *ArrayQueue) printCurrentQueueHead()int{
+func (queue *ArrayQueue) PrintCurrentQueueHead()int{
 	fmt.Println("当前front",queue.front)
-	if queue.isEmpty()||queue.front==queue.size-1{
+	if queue.IsEmpty()||queue.front==queue.size-1{
 		panic("Current not have data")
 	}
 	return queue.queue[queue.front+1]
 }
 
 // 打印队列
-func (queue *ArrayQueue) printQueue()  {
+func (queue *ArrayQueue) PrintQueue()  {
 	fmt.Println(queue.queue)
 }

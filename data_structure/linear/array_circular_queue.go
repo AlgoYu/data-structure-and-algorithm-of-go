@@ -16,7 +16,7 @@ import (
 func ArrayCircularQueueTest(){
 	loop := true
 	arrayCircularQueue := new(ArrayCircularQueue)
-	arrayCircularQueue.initQueue(5)
+	arrayCircularQueue.InitQueue(5)
 	for{
 		if !loop{
 			break
@@ -30,15 +30,15 @@ func ArrayCircularQueueTest(){
 		fmt.Scanf("%d", &input)
 		switch input {
 		case 1:
-			arrayCircularQueue.printQueue()
+			arrayCircularQueue.PrintQueue()
 		case 2:
 			var data int
 			fmt.Scanf("%d",&data)
-			arrayCircularQueue.addQueue(data)
+			arrayCircularQueue.AddQueue(data)
 		case 3:
-			fmt.Println(arrayCircularQueue.outQueue())
+			fmt.Println(arrayCircularQueue.OutQueue())
 		case 4:
-			fmt.Println(arrayCircularQueue.printCurrentQueueHead())
+			fmt.Println(arrayCircularQueue.PrintCurrentQueueHead())
 		case 5:
 			loop = false
 		}
@@ -58,25 +58,25 @@ type ArrayCircularQueue struct {
 }
 
 // 初始化队列
-func (queue *ArrayCircularQueue) initQueue(size int){
+func (queue *ArrayCircularQueue) InitQueue(size int){
 	queue.size = size
 	queue.queue = make([]int,size)
 	queue.front, queue.tail = 0,0
 }
 
 // 判断队列是否为空
-func (queue *ArrayCircularQueue) isEmpty()bool{
+func (queue *ArrayCircularQueue) IsEmpty()bool{
 	return queue.front == queue.tail
 }
 
 // 判断队列是否已满
-func (queue *ArrayCircularQueue) isFull()bool{
+func (queue *ArrayCircularQueue) IsFull()bool{
 	return (queue.tail+1) % queue.size == queue.front
 }
 
 // 加入数据到队列尾部
-func (queue *ArrayCircularQueue) addQueue(data int) {
-	if queue.isFull() {
+func (queue *ArrayCircularQueue) AddQueue(data int) {
+	if queue.IsFull() {
 		fmt.Println("Can't add queue because queue is full")
 		return
 	}
@@ -85,8 +85,8 @@ func (queue *ArrayCircularQueue) addQueue(data int) {
 }
 
 // 从队列头提取数据
-func (queue *ArrayCircularQueue) outQueue()int{
-	if queue.isEmpty(){
+func (queue *ArrayCircularQueue) OutQueue()int{
+	if queue.IsEmpty(){
 		panic("Can't add queue because queue is full")
 	}
 	data := queue.queue[queue.front]
@@ -95,21 +95,21 @@ func (queue *ArrayCircularQueue) outQueue()int{
 }
 
 // 得到当前队列长度
-func (queue *ArrayCircularQueue) getCurrentQueueLength() int{
+func (queue *ArrayCircularQueue) GetCurrentQueueLength() int{
 	return (queue.tail+queue.size-queue.front) % queue.size
 }
 
 // 打印当前队列头部
-func (queue *ArrayCircularQueue) printCurrentQueueHead()int{
-	if queue.isEmpty(){
+func (queue *ArrayCircularQueue) PrintCurrentQueueHead()int{
+	if queue.IsEmpty(){
 		fmt.Println("Current not have data")
 	}
 	return queue.queue[queue.front]
 }
 
 // 打印队列
-func (queue *ArrayCircularQueue) printQueue()  {
-	for i:= queue.front; i < queue.front+queue.getCurrentQueueLength();i++{
+func (queue *ArrayCircularQueue) PrintQueue()  {
+	for i:= queue.front; i < queue.front+queue.GetCurrentQueueLength();i++{
 		fmt.Print(queue.queue[i%queue.size]," ")
 	}
 	fmt.Println()

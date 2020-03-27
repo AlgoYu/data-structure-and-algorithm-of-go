@@ -15,7 +15,7 @@ import (
 func TwoWayLinkedListTest()  {
 	loop := true
 	twoWayLinkedList := new(TwoWayLinkedList)
-	twoWayLinkedList.init()
+	twoWayLinkedList.Init()
 	rand.Seed(6666)
 	for{
 		if !loop{
@@ -33,34 +33,34 @@ func TwoWayLinkedListTest()  {
 		fmt.Scanf("%d", &input)
 		switch input {
 		case 1:
-			twoWayLinkedList.printLinkedList()
+			twoWayLinkedList.PrintLinkedList()
 		case 2:
 			var id int
 			fmt.Scanf("%d",&id)
-			twoWayLinkedList.addNode(&TwoWayLinkedListNode{id: id, data:rand.Int()})
+			twoWayLinkedList.AddNode(&TwoWayLinkedListNode{id: id, data:rand.Int()})
 		case 3:
 			var id int
 			fmt.Scanf("%d",&id)
-			twoWayLinkedList.addOrderNode(&TwoWayLinkedListNode{id: id, data:rand.Int()})
+			twoWayLinkedList.AddOrderNode(&TwoWayLinkedListNode{id: id, data:rand.Int()})
 		case 4:
 			var id int
 			fmt.Scanf("%d",&id)
-			twoWayLinkedList.deleteNode(id)
+			twoWayLinkedList.DeleteNode(id)
 		case 5:
 			var id int
 			fmt.Scanf("%d",&id)
-			twoWayLinkedList.modifyNode(&TwoWayLinkedListNode{id: id, data:rand.Int()})
+			twoWayLinkedList.ModifyNode(&TwoWayLinkedListNode{id: id, data:rand.Int()})
 		case 6:
 			var id int
 			fmt.Scanf("%d",&id)
-			node := twoWayLinkedList.getNode(id)
+			node := twoWayLinkedList.GetNode(id)
 			if node==nil {
 				fmt.Println("没有找到这个节点")
 			}else{
 				fmt.Println("[",node.id,"]=",node.data)
 			}
 		case 7:
-			fmt.Println(twoWayLinkedList.getLength())
+			fmt.Println(twoWayLinkedList.GetLength())
 		case 8:
 			loop = false
 		}
@@ -80,7 +80,7 @@ type TwoWayLinkedList struct {
 }
 
 // 初始化链表
-func (twoWayLinkedList *TwoWayLinkedList)init()  {
+func (twoWayLinkedList *TwoWayLinkedList) Init()  {
 	twoWayLinkedList.next = &TwoWayLinkedListNode{
 		id:   0,
 		data: 0,
@@ -89,13 +89,13 @@ func (twoWayLinkedList *TwoWayLinkedList)init()  {
 }
 
 // 得到长度
-func (twoWayLinkedList *TwoWayLinkedList)getLength() uint {
+func (twoWayLinkedList *TwoWayLinkedList) GetLength() uint {
 	return twoWayLinkedList.length
 }
 
 // 增加节点
-func (twoWayLinkedList *TwoWayLinkedList)addNode(node *TwoWayLinkedListNode)  {
-	if twoWayLinkedList.getNode(node.id) != nil{
+func (twoWayLinkedList *TwoWayLinkedList) AddNode(node *TwoWayLinkedListNode)  {
+	if twoWayLinkedList.GetNode(node.id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -112,9 +112,9 @@ func (twoWayLinkedList *TwoWayLinkedList)addNode(node *TwoWayLinkedListNode)  {
 }
 
 // 增加有序节点
-func (twoWayLinkedList *TwoWayLinkedList)addOrderNode(node *TwoWayLinkedListNode)  {
+func (twoWayLinkedList *TwoWayLinkedList) AddOrderNode(node *TwoWayLinkedListNode)  {
 	// 判断是否已经存在
-	if twoWayLinkedList.getNode(node.id) != nil{
+	if twoWayLinkedList.GetNode(node.id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -137,8 +137,8 @@ func (twoWayLinkedList *TwoWayLinkedList)addOrderNode(node *TwoWayLinkedListNode
 }
 
 // 删除节点
-func (twoWayLinkedList *TwoWayLinkedList)deleteNode(id int)  {
-	if node := twoWayLinkedList.getNode(id); node != nil{
+func (twoWayLinkedList *TwoWayLinkedList) DeleteNode(id int)  {
+	if node := twoWayLinkedList.GetNode(id); node != nil{
 		node.pre.next = node.next
 		if node.next!=nil{
 			node.next.pre = node.pre
@@ -148,8 +148,8 @@ func (twoWayLinkedList *TwoWayLinkedList)deleteNode(id int)  {
 }
 
 // 修改节点
-func (twoWayLinkedList *TwoWayLinkedList)modifyNode(node *TwoWayLinkedListNode)  {
-	if valueNode:= twoWayLinkedList.getNode(node.id); valueNode!=nil{
+func (twoWayLinkedList *TwoWayLinkedList) ModifyNode(node *TwoWayLinkedListNode)  {
+	if valueNode:= twoWayLinkedList.GetNode(node.id); valueNode!=nil{
 		// 这里可以直接赋值也可以替换整个节点
 		node.pre = valueNode.pre
 		node.next = valueNode.next
@@ -161,7 +161,7 @@ func (twoWayLinkedList *TwoWayLinkedList)modifyNode(node *TwoWayLinkedListNode) 
 }
 
 // 得到节点
-func (twoWayLinkedList *TwoWayLinkedList)getNode(id int) *TwoWayLinkedListNode {
+func (twoWayLinkedList *TwoWayLinkedList) GetNode(id int) *TwoWayLinkedListNode {
 	// 创建指针并指定到第一个空节点
 	temp := twoWayLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
@@ -175,7 +175,7 @@ func (twoWayLinkedList *TwoWayLinkedList)getNode(id int) *TwoWayLinkedListNode {
 }
 
 // 打印链表
-func (twoWayLinkedList *TwoWayLinkedList)printLinkedList(){
+func (twoWayLinkedList *TwoWayLinkedList) PrintLinkedList(){
 	// 判断链表是否为空
 	if twoWayLinkedList.length <= 0{
 		fmt.Println("LinkedList is empty!")
