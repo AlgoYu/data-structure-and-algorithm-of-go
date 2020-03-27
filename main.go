@@ -1,5 +1,7 @@
 package main
 
+import "anydevelop.cn/algorithm/other"
+
 func main()  {
 	// 稀疏矩阵测试
 	//linear.SparseMatrixTest()
@@ -13,4 +15,6 @@ func main()  {
 	//linear.TwoWayLinkedListTest()
 	// 循环链表测试
 	//linear.CircularLinkedListTest()
+	// 约瑟夫圆形测试
+	other.JosephusTest()
 }
