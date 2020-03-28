@@ -9,68 +9,12 @@ package linear
 
 import (
 	"fmt"
-	"math/rand"
 )
 
-func SingleLinkedListTest()  {
-	loop := true
-	singleLinkedList := new(SingleLinkedList)
-	singleLinkedList.Init()
-	rand.Seed(6666)
-	for{
-		if !loop{
-			break
-		}
-		fmt.Println("输入1为打印链表")
-		fmt.Println("输入2为加入链表节点")
-		fmt.Println("输入3为加入链表有序节点")
-		fmt.Println("输入4为删除链表节点")
-		fmt.Println("输入5为修改链表节点")
-		fmt.Println("输入6为查找节点")
-		fmt.Println("输入7为打印链表长度")
-		fmt.Println("输入8为退出")
-		var input int
-		fmt.Scanf("%d", &input)
-		switch input {
-		case 1:
-			singleLinkedList.PrintLinkedList()
-		case 2:
-			var id int
-			fmt.Scanf("%d",&id)
-			singleLinkedList.AddNode(&SingleLinkedListNode{id: id, data:rand.Int()})
-		case 3:
-			var id int
-			fmt.Scanf("%d",&id)
-			singleLinkedList.AddOrderNode(&SingleLinkedListNode{id: id, data:rand.Int()})
-		case 4:
-			var id int
-			fmt.Scanf("%d",&id)
-			singleLinkedList.DeleteNode(id)
-		case 5:
-			var id int
-			fmt.Scanf("%d",&id)
-			singleLinkedList.ModifyNode(&SingleLinkedListNode{id: id, data:rand.Int()})
-		case 6:
-			var id int
-			fmt.Scanf("%d",&id)
-			node := singleLinkedList.GetNode(id)
-			if node==nil {
-				fmt.Println("没有找到这个节点")
-			}else{
-				fmt.Println("[",node.id,"]=",node.data)
-			}
-		case 7:
-			fmt.Println(singleLinkedList.GetLength())
-		case 8:
-			loop = false
-		}
-	}
-}
-
 type SingleLinkedListNode struct {
-	id   int
-	data int
-	next *SingleLinkedListNode
+	Id   int
+	Data int
+	Next *SingleLinkedListNode
 }
 
 type SingleLinkedList struct {
@@ -81,9 +25,9 @@ type SingleLinkedList struct {
 // 初始化链表
 func (singleLinkedList *SingleLinkedList) Init()  {
 	singleLinkedList.next = &SingleLinkedListNode{
-		id:   0,
-		data: 0,
-		next: nil,
+		Id:   0,
+		Data: 0,
+		Next: nil,
 	}
 }
 
@@ -94,25 +38,25 @@ func (singleLinkedList *SingleLinkedList) GetLength() uint {
 
 // 增加节点
 func (singleLinkedList *SingleLinkedList) AddNode(node *SingleLinkedListNode)  {
-	if singleLinkedList.GetNode(node.id) != nil{
+	if singleLinkedList.GetNode(node.Id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
 	temp := singleLinkedList.next
 	for{
-		if temp.next == nil{
+		if temp.Next == nil{
 			break
 		}
-		temp = temp.next
+		temp = temp.Next
 	}
-	temp.next = node
+	temp.Next = node
 	singleLinkedList.length++
 }
 
 // 增加有序节点
 func (singleLinkedList *SingleLinkedList) AddOrderNode(node *SingleLinkedListNode)  {
 	// 判断是否已经存在
-	if singleLinkedList.GetNode(node.id) != nil{
+	if singleLinkedList.GetNode(node.Id) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -120,14 +64,14 @@ func (singleLinkedList *SingleLinkedList) AddOrderNode(node *SingleLinkedListNod
 	temp := singleLinkedList.next
 	// 在链表中找到比当前需要插入的节点ID小的节点
 	for{
-		if temp.next == nil || temp.next.id > node.id {
+		if temp.Next == nil || temp.Next.Id > node.Id {
 			break
 		}
-		temp = temp.next
+		temp = temp.Next
 	}
 	// 插入节点
-	node.next = temp.next
-	temp.next = node
+	node.Next = temp.Next
+	temp.Next = node
 	singleLinkedList.length++
 }
 
@@ -137,14 +81,14 @@ func (singleLinkedList *SingleLinkedList) DeleteNode(id int)  {
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
 	for{
-		if temp.next == nil || temp.next.id == id{
+		if temp.Next == nil || temp.Next.Id == id{
 			break
 		}
-		temp = temp.next
+		temp = temp.Next
 	}
 	// 判断下一个节点是否为空
-	if temp.next != nil{
-		temp.next = temp.next.next
+	if temp.Next != nil{
+		temp.Next = temp.Next.Next
 		singleLinkedList.length--
 	}
 }
@@ -155,16 +99,16 @@ func (singleLinkedList *SingleLinkedList) ModifyNode(node *SingleLinkedListNode)
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
 	for{
-		if temp.next == nil || temp.next.id == node.id {
+		if temp.Next == nil || temp.Next.Id == node.Id {
 			break
 		}
-		temp = temp.next
+		temp = temp.Next
 	}
 	// 判断下一个节点是否为空
-	if temp.next != nil{
+	if temp.Next != nil{
 		// 这里可以替换整个节点也可以只赋值
-		node.next = temp.next.next
-		temp.next = node
+		node.Next = temp.Next.Next
+		temp.Next = node
 	}
 }
 
@@ -174,12 +118,12 @@ func (singleLinkedList *SingleLinkedList) GetNode(id int) *SingleLinkedListNode 
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
 	for{
-		if temp.next == nil || temp.next.id ==id{
+		if temp.Next == nil || temp.Next.Id ==id{
 			break
 		}
-		temp = temp.next
+		temp = temp.Next
 	}
-	return temp.next
+	return temp.Next
 }
 
 // 打印链表
@@ -193,11 +137,11 @@ func (singleLinkedList *SingleLinkedList) PrintLinkedList(){
 	temp := singleLinkedList.next
 	// 指针反复指向下一个非空节点并打印
 	for{
-		if temp.next == nil{
+		if temp.Next == nil{
 			break
 		}
-		temp = temp.next
-		fmt.Print("[",temp.id,"]=",temp.data," ")
+		temp = temp.Next
+		fmt.Print("[",temp.Id,"]=",temp.Data," ")
 	}
 	fmt.Println()
 }

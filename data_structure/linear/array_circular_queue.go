@@ -13,38 +13,6 @@ import (
 	"fmt"
 )
 
-func ArrayCircularQueueTest(){
-	loop := true
-	arrayCircularQueue := new(ArrayCircularQueue)
-	arrayCircularQueue.InitQueue(5)
-	for{
-		if !loop{
-			break
-		}
-		fmt.Println("输入1为打印队列")
-		fmt.Println("输入2为加入数据")
-		fmt.Println("输入3为取出数据")
-		fmt.Println("输入4为显示当前队列头部")
-		fmt.Println("输入5为退出")
-		var input int
-		fmt.Scanf("%d", &input)
-		switch input {
-		case 1:
-			arrayCircularQueue.PrintQueue()
-		case 2:
-			var data int
-			fmt.Scanf("%d",&data)
-			arrayCircularQueue.AddQueue(data)
-		case 3:
-			fmt.Println(arrayCircularQueue.OutQueue())
-		case 4:
-			fmt.Println(arrayCircularQueue.PrintCurrentQueueHead())
-		case 5:
-			loop = false
-		}
-	}
-}
-
 // 定义数组队列
 type ArrayCircularQueue struct {
 	// 队列
@@ -102,13 +70,16 @@ func (queue *ArrayCircularQueue) GetCurrentQueueLength() int{
 // 打印当前队列头部
 func (queue *ArrayCircularQueue) PrintCurrentQueueHead()int{
 	if queue.IsEmpty(){
-		fmt.Println("Current not have data")
+		fmt.Println("Current not have Data")
 	}
 	return queue.queue[queue.front]
 }
 
 // 打印队列
 func (queue *ArrayCircularQueue) PrintQueue()  {
+	if queue.IsEmpty(){
+		fmt.Println("Current not have Data")
+	}
 	for i:= queue.front; i < queue.front+queue.GetCurrentQueueLength();i++{
 		fmt.Print(queue.queue[i%queue.size]," ")
 	}

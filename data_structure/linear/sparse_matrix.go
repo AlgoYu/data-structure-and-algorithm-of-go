@@ -11,24 +11,6 @@ import (
 	"fmt"
 )
 
-func SparseMatrixTest()  {
-	var sourceMatrix [10][10]int
-	sourceMatrix[4][6] = 5
-	sourceMatrix[6][3] = 2
-	sourceMatrix[1][7] = 10
-	arg := make([][]int,len(sourceMatrix))
-	for i := range sourceMatrix {
-		arg[i] = sourceMatrix[i][:]
-	}
-	fmt.Println("打印原始矩阵")
-	PrintMatrix(arg)
-	sparseMatrix := ConvertToSparseMatrix(arg)
-	fmt.Println("打印稀疏矩阵")
-	PrintMatrix(sparseMatrix)
-	fmt.Println("打印从稀疏矩阵中恢复的原始矩阵")
-	PrintMatrix(RestoreMatrixFromSparseMatrix(sparseMatrix))
-}
-
 /* 把原始矩阵转换为稀疏矩阵 */
 func ConvertToSparseMatrix(sourceMatrix [][]int) [][]int  {
 	// validData记录矩阵的有效数据个数

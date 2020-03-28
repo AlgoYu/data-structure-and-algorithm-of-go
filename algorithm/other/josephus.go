@@ -11,14 +11,13 @@ package other
 
 import (
 	"fmt"
-	"math/rand"
 )
 
 // 数据节点
 type People struct {
-	id int
-	data int
-	next *People
+	Id   int
+	Data int
+	Next *People
 }
 
 // 约瑟夫环
@@ -31,19 +30,19 @@ type Josephus struct {
 func (josephus *Josephus) AddNode(node *People) {
 	if josephus.next == nil{
 		josephus.next = node
-		josephus.next.next = josephus.next
+		josephus.next.Next = josephus.next
 		josephus.length++
 		return
 	}
 	temp := josephus.next
 	for{
-		if temp.next == josephus.next{
+		if temp.Next == josephus.next{
 			break
 		}
-		temp = temp.next
+		temp = temp.Next
 	}
-	node.next = temp.next
-	temp.next = node
+	node.Next = temp.Next
+	temp.Next = node
 	josephus.length++
 }
 
@@ -59,8 +58,8 @@ func (josephus *Josephus) PrintLinkedList() {
 		if count == 0{
 			break
 		}
-		fmt.Print("[",temp.id,"]=",temp.data," ")
-		temp = temp.next
+		fmt.Print("[",temp.Id,"]=",temp.Data," ")
+		temp = temp.Next
 		count--
 	}
 	fmt.Println()
@@ -74,16 +73,16 @@ func (josephus *Josephus) PrintJosephusCircular(start,count int) {
 	// 辅助指针先指向环形指针尾部
 	helper := josephus.next
 	for{
-		if helper.next == josephus.next{
+		if helper.Next == josephus.next{
 			break
 		}
-		helper = helper.next
+		helper = helper.Next
 	}
 	// 当前指针指向起始节点，辅助指针跟随在后。
 	current := josephus.next
 	for i := 0; i < start -1; i++ {
-		current = current.next
-		helper = helper.next
+		current = current.Next
+		helper = helper.Next
 	}
 	// 只要辅助指针不等于当前指针说明数据节点大于2
 	for{
@@ -92,48 +91,16 @@ func (josephus *Josephus) PrintJosephusCircular(start,count int) {
 		}
 		// 当前指针指向需要出链表的节点，辅助指针跟随在后。
 		for i:= 0; i < count-1; i++{
-			current = current.next
-			helper = helper.next
+			current = current.Next
+			helper = helper.Next
 		}
 		// 打印当前节点
-		fmt.Print("[",current.id,"]=",current.data," ")
+		fmt.Print("[",current.Id,"]=",current.Data," ")
 		// 当前指针指向下一个节点
-		current = current.next
+		current = current.Next
 		// 辅助指针指向当前节点
-		helper.next = current
+		helper.Next = current
 	}
 	fmt.Println()
-	fmt.Println("存活：","[",current.id,"]=",current.data)
-}
-
-func JosephusTest()  {
-	loop := true
-	josephus := new(Josephus)
-	rand.Seed(6666)
-	for{
-		if !loop{
-			break
-		}
-		fmt.Println("输入1为打印链表")
-		fmt.Println("输入2为加入链表节点")
-		fmt.Println("输入3为打印约瑟夫圆形")
-		fmt.Println("输入4为退出")
-		var input int
-		fmt.Scanf("%d", &input)
-		switch input {
-		case 1:
-			josephus.PrintLinkedList()
-		case 2:
-			var id int
-			fmt.Scanf("%d",&id)
-			josephus.AddNode(&People{id: id, data:rand.Int()})
-		case 3:
-			var start,count int
-			fmt.Scanf("%d", &start)
-			fmt.Scanf("%d", &count)
-			josephus.PrintJosephusCircular(start,count)
-		case 4:
-			loop = false
-		}
-	}
+	fmt.Println("存活：","[",current.Id,"]=",current.Data)
 }

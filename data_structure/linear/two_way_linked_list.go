@@ -9,69 +9,13 @@ package linear
 
 import (
 	"fmt"
-	"math/rand"
 )
 
-func TwoWayLinkedListTest()  {
-	loop := true
-	twoWayLinkedList := new(TwoWayLinkedList)
-	twoWayLinkedList.Init()
-	rand.Seed(6666)
-	for{
-		if !loop{
-			break
-		}
-		fmt.Println("输入1为打印链表")
-		fmt.Println("输入2为加入链表节点")
-		fmt.Println("输入3为加入链表有序节点")
-		fmt.Println("输入4为删除链表节点")
-		fmt.Println("输入5为修改链表节点")
-		fmt.Println("输入6为查找节点")
-		fmt.Println("输入7为打印链表长度")
-		fmt.Println("输入8为退出")
-		var input int
-		fmt.Scanf("%d", &input)
-		switch input {
-		case 1:
-			twoWayLinkedList.PrintLinkedList()
-		case 2:
-			var id int
-			fmt.Scanf("%d",&id)
-			twoWayLinkedList.AddNode(&TwoWayLinkedListNode{id: id, data:rand.Int()})
-		case 3:
-			var id int
-			fmt.Scanf("%d",&id)
-			twoWayLinkedList.AddOrderNode(&TwoWayLinkedListNode{id: id, data:rand.Int()})
-		case 4:
-			var id int
-			fmt.Scanf("%d",&id)
-			twoWayLinkedList.DeleteNode(id)
-		case 5:
-			var id int
-			fmt.Scanf("%d",&id)
-			twoWayLinkedList.ModifyNode(&TwoWayLinkedListNode{id: id, data:rand.Int()})
-		case 6:
-			var id int
-			fmt.Scanf("%d",&id)
-			node := twoWayLinkedList.GetNode(id)
-			if node==nil {
-				fmt.Println("没有找到这个节点")
-			}else{
-				fmt.Println("[",node.id,"]=",node.data)
-			}
-		case 7:
-			fmt.Println(twoWayLinkedList.GetLength())
-		case 8:
-			loop = false
-		}
-	}
-}
-
 type TwoWayLinkedListNode struct {
-	id   int
-	data int
-	pre  *TwoWayLinkedListNode
-	next *TwoWayLinkedListNode
+	ID   int
+	Data int
+	Pre  *TwoWayLinkedListNode
+	Next *TwoWayLinkedListNode
 }
 
 type TwoWayLinkedList struct {
@@ -82,9 +26,9 @@ type TwoWayLinkedList struct {
 // 初始化链表
 func (twoWayLinkedList *TwoWayLinkedList) Init()  {
 	twoWayLinkedList.next = &TwoWayLinkedListNode{
-		id:   0,
-		data: 0,
-		next: nil,
+		ID:   0,
+		Data: 0,
+		Next: nil,
 	}
 }
 
@@ -95,26 +39,26 @@ func (twoWayLinkedList *TwoWayLinkedList) GetLength() uint {
 
 // 增加节点
 func (twoWayLinkedList *TwoWayLinkedList) AddNode(node *TwoWayLinkedListNode)  {
-	if twoWayLinkedList.GetNode(node.id) != nil{
+	if twoWayLinkedList.GetNode(node.ID) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
 	temp := twoWayLinkedList.next
 	for{
-		if temp.next == nil{
+		if temp.Next == nil{
 			break
 		}
-		temp = temp.next
+		temp = temp.Next
 	}
-	node.pre = temp
-	temp.next = node
+	node.Pre = temp
+	temp.Next = node
 	twoWayLinkedList.length++
 }
 
 // 增加有序节点
 func (twoWayLinkedList *TwoWayLinkedList) AddOrderNode(node *TwoWayLinkedListNode)  {
 	// 判断是否已经存在
-	if twoWayLinkedList.GetNode(node.id) != nil{
+	if twoWayLinkedList.GetNode(node.ID) != nil{
 		fmt.Println("The node already exists")
 		return
 	}
@@ -122,26 +66,27 @@ func (twoWayLinkedList *TwoWayLinkedList) AddOrderNode(node *TwoWayLinkedListNod
 	temp := twoWayLinkedList.next
 	// 在链表中找到比当前需要插入的节点ID小的节点
 	for{
-		if temp.next == nil || temp.next.id > node.id {
+		if temp.Next == nil || temp.Next.ID > node.ID {
 			break
 		}
-		temp = temp.next
+		temp = temp.Next
 	}
 	// 插入节点
-	if temp.next != nil{
-		temp.next.pre = node
+	if temp.Next != nil{
+		temp.Next.Pre = node
 	}
-	node.next = temp.next
-	temp.next = node
+	node.Next = temp.Next
+	node.Pre = temp
+	temp.Next = node
 	twoWayLinkedList.length++
 }
 
 // 删除节点
 func (twoWayLinkedList *TwoWayLinkedList) DeleteNode(id int)  {
 	if node := twoWayLinkedList.GetNode(id); node != nil{
-		node.pre.next = node.next
-		if node.next!=nil{
-			node.next.pre = node.pre
+		node.Pre.Next = node.Next
+		if node.Next !=nil{
+			node.Next.Pre = node.Pre
 		}
 		twoWayLinkedList.length--
 	}
@@ -149,14 +94,14 @@ func (twoWayLinkedList *TwoWayLinkedList) DeleteNode(id int)  {
 
 // 修改节点
 func (twoWayLinkedList *TwoWayLinkedList) ModifyNode(node *TwoWayLinkedListNode)  {
-	if valueNode:= twoWayLinkedList.GetNode(node.id); valueNode!=nil{
+	if valueNode:= twoWayLinkedList.GetNode(node.ID); valueNode!=nil{
 		// 这里可以直接赋值也可以替换整个节点
-		node.pre = valueNode.pre
-		node.next = valueNode.next
-		if node.next != nil{
-			node.next.pre = node
+		node.Pre = valueNode.Pre
+		node.Next = valueNode.Next
+		if node.Next != nil{
+			node.Next.Pre = node
 		}
-		node.pre.next = node
+		node.Pre.Next = node
 	}
 }
 
@@ -166,12 +111,12 @@ func (twoWayLinkedList *TwoWayLinkedList) GetNode(id int) *TwoWayLinkedListNode 
 	temp := twoWayLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
 	for{
-		if temp.next == nil || temp.next.id ==id{
+		if temp.Next == nil || temp.Next.ID ==id{
 			break
 		}
-		temp = temp.next
+		temp = temp.Next
 	}
-	return temp.next
+	return temp.Next
 }
 
 // 打印链表
@@ -185,11 +130,11 @@ func (twoWayLinkedList *TwoWayLinkedList) PrintLinkedList(){
 	temp := twoWayLinkedList.next
 	// 指针反复指向下一个非空节点并打印
 	for{
-		if temp.next == nil{
+		if temp.Next == nil{
 			break
 		}
-		temp = temp.next
-		fmt.Print("[",temp.id,"]=",temp.data," ")
+		temp = temp.Next
+		fmt.Print("[",temp.ID,"]=",temp.Data," ")
 	}
 	fmt.Println()
 }

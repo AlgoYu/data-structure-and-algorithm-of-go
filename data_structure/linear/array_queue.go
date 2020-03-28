@@ -12,38 +12,6 @@ import (
 	"fmt"
 )
 
-func ArrayQueueTest(){
-	loop := true
-	arrayQueue := new(ArrayQueue)
-	arrayQueue.InitQueue(5)
-	for{
-		if !loop{
-			break
-		}
-		fmt.Println("输入1为打印队列")
-		fmt.Println("输入2为加入数据")
-		fmt.Println("输入3为取出数据")
-		fmt.Println("输入4为显示当前队列头部")
-		fmt.Println("输入5为退出")
-		var input int
-		fmt.Scanf("%d", &input)
-		switch input {
-		case 1:
-			arrayQueue.PrintQueue()
-		case 2:
-			var data int
-			fmt.Scanf("%d",&data)
-			arrayQueue.AddQueue(data)
-		case 3:
-			fmt.Println(arrayQueue.OutQueue())
-		case 4:
-			fmt.Println(arrayQueue.PrintCurrentQueueHead())
-		case 5:
-			loop = false
-		}
-	}
-}
-
 // 定义数组队列
 type ArrayQueue struct {
 	// 队列
@@ -96,7 +64,7 @@ func (queue *ArrayQueue) OutQueue()int{
 func (queue *ArrayQueue) PrintCurrentQueueHead()int{
 	fmt.Println("当前front",queue.front)
 	if queue.IsEmpty()||queue.front==queue.size-1{
-		panic("Current not have data")
+		panic("Current not have Data")
 	}
 	return queue.queue[queue.front+1]
 }
