@@ -24,8 +24,10 @@ func main()  {
 	//JosephusTest()
 	// 栈测试
 	//ArrayStackTest()
-	// 无括号表达式计算器测试
-	CalculatorTest()
+	// 中缀表达式计算器测试
+	//CalculatorTest()
+	// 后缀（逆波兰）表达式计算器测试
+	ReversePolishCalculatorTest()
 }
 
 // 稀疏矩阵测试
@@ -344,9 +346,16 @@ func ArrayStackTest(){
 	}
 }
 
-// 无括号表达式计算器测试
+// 中缀表达式计算器测试
 func CalculatorTest()  {
 	calculator := new(other.Calculator)
 	calculator.Init()
 	fmt.Println(calculator.CalculateExpression("3+5-2*4/4"))
+}
+
+// 后缀（逆波兰）表达式计算器测试
+func ReversePolishCalculatorTest()  {
+	reversePolishCalculator := new(other.ReversePolishCalculator)
+	reversePolishCalculator.Init()
+	fmt.Println(reversePolishCalculator.CalculateReversePolishExpression("72 2 - 2 / 5 / 2 *"))
 }
