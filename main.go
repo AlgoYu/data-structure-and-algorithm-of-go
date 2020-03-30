@@ -27,7 +27,9 @@ func main()  {
 	// 中缀表达式计算器测试
 	//CalculatorTest()
 	// 后缀（逆波兰）表达式计算器测试
-	ReversePolishCalculatorTest()
+	//ReversePolishCalculatorTest()
+	// 中缀表达式转后缀表达式
+	expressionConverterTest()
 }
 
 // 稀疏矩阵测试
@@ -358,4 +360,11 @@ func ReversePolishCalculatorTest()  {
 	reversePolishCalculator := new(other.ReversePolishCalculator)
 	reversePolishCalculator.Init()
 	fmt.Println(reversePolishCalculator.CalculateReversePolishExpression("72 2 - 2 / 5 / 2 *"))
+}
+
+// 中缀表达式转后缀表达式
+func expressionConverterTest()  {
+	expressionConverter := new(other.ExpressionConverter)
+	expressionConverter.Init()
+	fmt.Println(expressionConverter.ConversionExpression("3 + 3 * ( 4 + 1 ) / 10"))
 }
