@@ -31,7 +31,9 @@ func main()  {
 	// 中缀表达式转后缀表达式
 	//ExpressionConverterTest()
 	// 阶乘和打印测试
-	RecursiveTest()
+	//RecursiveTest()
+	// 迷宫测试
+	LabyrinthTest()
 }
 
 // 稀疏矩阵测试
@@ -375,4 +377,33 @@ func ExpressionConverterTest()  {
 func RecursiveTest(){
 	fmt.Println(other.Factorial(15))
 	other.PrintAllNumOf(15)
+}
+
+// 迷宫测试
+func LabyrinthTest()  {
+	labyrinth := make([][]int,8)
+	for i := range labyrinth {
+		labyrinth[i] = make([]int,9)
+		labyrinth[i][0] = 1
+		labyrinth[i][8] = 1
+	}
+	for i:=0; i< len(labyrinth[0]); i++ {
+		labyrinth[0][i] = 1
+		labyrinth[7][i] = 1
+	}
+	labyrinth[3][1] = 1
+	labyrinth[3][2] = 1
+	labyrinth[3][3] = 1
+	labyrinth[3][4] = 1
+	/*labyrinth[3][5] = 1
+	labyrinth[3][6] = 1
+	labyrinth[3][7] = 1*/
+	fmt.Println("走迷宫前：")
+	other.PrintLabyrinth(labyrinth)
+	fmt.Println("走迷宫后：")
+	if other.DetectRoad(labyrinth,1,1,6,7){
+		other.PrintLabyrinth(labyrinth)
+	}else{
+		fmt.Println("迷宫是死路!")
+	}
 }
