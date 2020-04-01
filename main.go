@@ -29,7 +29,9 @@ func main()  {
 	// 后缀（逆波兰）表达式计算器测试
 	//ReversePolishCalculatorTest()
 	// 中缀表达式转后缀表达式
-	expressionConverterTest()
+	//ExpressionConverterTest()
+	// 阶乘和打印测试
+	RecursiveTest()
 }
 
 // 稀疏矩阵测试
@@ -363,8 +365,14 @@ func ReversePolishCalculatorTest()  {
 }
 
 // 中缀表达式转后缀表达式
-func expressionConverterTest()  {
+func ExpressionConverterTest()  {
 	expressionConverter := new(other.ExpressionConverter)
 	expressionConverter.Init()
 	fmt.Println(expressionConverter.ConversionExpression("3 + 3 * ( 4 + 1 ) / 10"))
+}
+
+// 阶乘和打印测试
+func RecursiveTest(){
+	fmt.Println(other.Factorial(15))
+	other.PrintAllNumOf(15)
 }
