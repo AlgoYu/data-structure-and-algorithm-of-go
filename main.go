@@ -33,7 +33,9 @@ func main()  {
 	// 阶乘和打印测试
 	//RecursiveTest()
 	// 迷宫测试
-	LabyrinthTest()
+	//LabyrinthTest()
+	// 八皇后测试
+	EightQueenTest()
 }
 
 // 稀疏矩阵测试
@@ -406,4 +408,11 @@ func LabyrinthTest()  {
 	}else{
 		fmt.Println("迷宫是死路!")
 	}
+}
+
+// 八皇后测试
+func EightQueenTest()  {
+	eightQueen := new(other.EightQueen)
+	eightQueen.Init(8,8)
+	eightQueen.PutQueen(0)
 }
