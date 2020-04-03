@@ -2,9 +2,11 @@ package main
 
 import (
 	"anydevelop.cn/algorithm/other"
+	"anydevelop.cn/algorithm/sort/interior/swap"
 	"anydevelop.cn/data_structure/linear"
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 func main()  {
@@ -35,7 +37,9 @@ func main()  {
 	// 迷宫测试
 	//LabyrinthTest()
 	// 八皇后测试
-	EightQueenTest()
+	//EightQueenTest()
+	// 冒泡排序测试
+	BubbleSortTest()
 }
 
 // 稀疏矩阵测试
@@ -415,4 +419,21 @@ func EightQueenTest()  {
 	eightQueen := new(other.EightQueen)
 	eightQueen.Init(8,8)
 	eightQueen.PutQueen(0)
+}
+
+// 冒泡排序测试
+func BubbleSortTest()  {
+	array := make([]int,20)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(500)
+	}
+	/*fmt.Println("排序前：")
+	fmt.Println(array)
+	fmt.Println("冒泡排序后：")
+	fmt.Println(swap.BubbleSort(array))*/
+	fmt.Println("排序前：")
+	fmt.Println(array)
+	fmt.Println("优化冒泡排序后：")
+	fmt.Println(swap.BubbleSortOptimize(array))
 }
