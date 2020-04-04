@@ -2,6 +2,7 @@ package main
 
 import (
 	"anydevelop.cn/algorithm/other"
+	"anydevelop.cn/algorithm/sort/interior/selection"
 	"anydevelop.cn/algorithm/sort/interior/swap"
 	"anydevelop.cn/data_structure/linear"
 	"fmt"
@@ -39,7 +40,9 @@ func main()  {
 	// 八皇后测试
 	//EightQueenTest()
 	// 冒泡排序测试
-	BubbleSortTest()
+	//BubbleSortTest()
+	// 选择排序测试
+	SelectionSortTest()
 }
 
 // 稀疏矩阵测试
@@ -436,4 +439,17 @@ func BubbleSortTest()  {
 	fmt.Println(array)
 	fmt.Println("优化冒泡排序后：")
 	fmt.Println(swap.BubbleSortOptimize(array))
+}
+
+// 选择排序测试
+func SelectionSortTest()  {
+	array := make([]int,20)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(500)
+	}
+	fmt.Println("排序前：")
+	fmt.Println(array)
+	fmt.Println("选择排序后：")
+	fmt.Println(selection.SelectionSort(array))
 }
