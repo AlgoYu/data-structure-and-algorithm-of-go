@@ -42,7 +42,8 @@ func main()  {
 	// 冒泡排序测试
 	//BubbleSortTest()
 	// 选择排序测试
-	SelectionSortTest()
+	//SelectionSortTest()
+	InsertionSortTest()
 }
 
 // 稀疏矩阵测试
@@ -451,5 +452,18 @@ func SelectionSortTest()  {
 	fmt.Println("排序前：")
 	fmt.Println(array)
 	fmt.Println("选择排序后：")
+	fmt.Println(selection.SelectionSort(array))
+}
+
+// 插入排序测试
+func InsertionSortTest()  {
+	array := make([]int,20)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(500)
+	}
+	fmt.Println("排序前：")
+	fmt.Println(array)
+	fmt.Println("插入排序后：")
 	fmt.Println(selection.SelectionSort(array))
 }
