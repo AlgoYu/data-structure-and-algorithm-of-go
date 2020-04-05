@@ -2,6 +2,7 @@ package main
 
 import (
 	"anydevelop.cn/algorithm/other"
+	"anydevelop.cn/algorithm/sort/interior/insertion"
 	"anydevelop.cn/algorithm/sort/interior/selection"
 	"anydevelop.cn/algorithm/sort/interior/swap"
 	"anydevelop.cn/data_structure/linear"
@@ -464,6 +465,6 @@ func InsertionSortTest()  {
 	}
 	fmt.Println("排序前：")
 	fmt.Println(array)
-	fmt.Println("插入排序后：")
-	fmt.Println(selection.SelectionSort(array))
+	fmt.Println("希尔排序后：")
+	fmt.Println(insertion.ShellSort(array))
 }
