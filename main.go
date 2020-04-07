@@ -44,7 +44,10 @@ func main()  {
 	//BubbleSortTest()
 	// 选择排序测试
 	//SelectionSortTest()
-	InsertionSortTest()
+	// 插入排序测试
+	//InsertionSortTest()
+	// 希尔排序测试
+	ShellSortTest()
 }
 
 // 稀疏矩阵测试
@@ -465,6 +468,21 @@ func InsertionSortTest()  {
 	}
 	fmt.Println("排序前：")
 	fmt.Println(array)
-	fmt.Println("希尔排序后：")
-	fmt.Println(insertion.ShellSort(array))
+	fmt.Println("插入移位排序后：")
+	fmt.Println(insertion.InsertionSort(array))
+}
+
+// 希尔排序测试
+func ShellSortTest()  {
+	array := make([]int,20)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(500)
+	}
+	fmt.Println("排序前：")
+	fmt.Println(array)
+	/*fmt.Println("希尔交换排序后：")
+	fmt.Println(insertion.ShellSwapSort(array))*/
+	fmt.Println("希尔移位排序后：")
+	fmt.Println(insertion.ShellMoveSort(array))
 }
