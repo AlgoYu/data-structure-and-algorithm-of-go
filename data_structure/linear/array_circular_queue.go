@@ -70,7 +70,7 @@ func (queue *ArrayCircularQueue) GetCurrentQueueLength() int{
 // 打印当前队列头部
 func (queue *ArrayCircularQueue) PrintCurrentQueueHead()int{
 	if queue.IsEmpty(){
-		fmt.Println("Current not have Data")
+		fmt.Println("Current have not data")
 	}
 	return queue.queue[queue.front]
 }

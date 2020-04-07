@@ -47,7 +47,9 @@ func main()  {
 	// 插入排序测试
 	//InsertionSortTest()
 	// 希尔排序测试
-	ShellSortTest()
+	//ShellSortTest()
+	// 快速排序测试
+	//QuickSortTest()
 }
 
 // 稀疏矩阵测试
@@ -485,4 +487,18 @@ func ShellSortTest()  {
 	fmt.Println(insertion.ShellSwapSort(array))*/
 	fmt.Println("希尔移位排序后：")
 	fmt.Println(insertion.ShellMoveSort(array))
+}
+
+// 快速排序测试
+func QuickSortTest()  {
+	array := make([]int,80000)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(500)
+	}
+	fmt.Println("排序前：")
+	fmt.Println(array)
+	fmt.Println("快速排序后：")
+	swap.QuickSort(array,0, len(array)-1)
+	fmt.Println(array)
 }

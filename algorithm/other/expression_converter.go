@@ -1,3 +1,12 @@
+/*
+表达式转换器：输入带括号中缀表达式，转换为后缀表达式。
+主要思想：
+	1. 创建两个栈。
+	2. 把字符推入操作符栈，把数字推入数值栈。
+	3. 左括号直接入操作符栈，右括号取出操作符栈左括号前所有操作符压入数值栈，若是操作符比较操作符栈中的优先级，优先级大于直接压入操作符栈，优先级小于操作符栈中的优先级则先取出操作符栈的操作符推入数值栈再把当前操作符推入操作符栈。
+	4. 把所有操作符栈取出并压入数值栈。
+	5. 头拼取出所有数值栈。
+*/
 package other
 
 import (
@@ -32,10 +41,7 @@ func (expressionConverter *ExpressionConverter) ConversionExpression(expression 
 				expressionConverter.st1.Push(int(bytes[0]))
 				// 右括号则一直取出st1的直到左括号为止的所有字符推入st2
 			}else if values[i] == ")"{
-				for{
-					if(string(byte(expressionConverter.st1.Peek()))=="("){
-						break
-					}
+				for string(byte(expressionConverter.st1.Peek()))!="("{
 					expressionConverter.st2.Push(expressionConverter.st1.Pop())
 				}
 				expressionConverter.st1.Pop()
@@ -56,16 +62,10 @@ func (expressionConverter *ExpressionConverter) ConversionExpression(expression 
 			expressionConverter.st2.Push(atoi)
 		}
 	}
-	for{
-		if(expressionConverter.st1.IsEmpty()){
-			break
-		}
+	for !expressionConverter.st1.IsEmpty(){
 		expressionConverter.st2.Push(expressionConverter.st1.Pop())
 	}
-	for{
-		if(expressionConverter.st2.IsEmpty()){
-			break
-		}
+	for !expressionConverter.st2.IsEmpty(){
 		value := expressionConverter.st2.Pop()
 		if expressionConverter.IsOperator(string(byte(value))){
 			suffixExpression = string(byte(value))+" "+suffixExpression

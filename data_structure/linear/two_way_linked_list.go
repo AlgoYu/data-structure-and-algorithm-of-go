@@ -44,10 +44,7 @@ func (twoWayLinkedList *TwoWayLinkedList) AddNode(node *TwoWayLinkedListNode)  {
 		return
 	}
 	temp := twoWayLinkedList.next
-	for{
-		if temp.Next == nil{
-			break
-		}
+	for temp.Next != nil{
 		temp = temp.Next
 	}
 	node.Pre = temp
@@ -65,10 +62,7 @@ func (twoWayLinkedList *TwoWayLinkedList) AddOrderNode(node *TwoWayLinkedListNod
 	// 创建指针并指定到第一个空节点
 	temp := twoWayLinkedList.next
 	// 在链表中找到比当前需要插入的节点ID小的节点
-	for{
-		if temp.Next == nil || temp.Next.ID > node.ID {
-			break
-		}
+	for temp.Next != nil && temp.Next.ID < node.ID{
 		temp = temp.Next
 	}
 	// 插入节点
@@ -110,10 +104,7 @@ func (twoWayLinkedList *TwoWayLinkedList) GetNode(id int) *TwoWayLinkedListNode 
 	// 创建指针并指定到第一个空节点
 	temp := twoWayLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
-	for{
-		if temp.Next == nil || temp.Next.ID ==id{
-			break
-		}
+	for temp.Next != nil && temp.Next.ID !=id{
 		temp = temp.Next
 	}
 	return temp.Next
@@ -129,10 +120,7 @@ func (twoWayLinkedList *TwoWayLinkedList) PrintLinkedList(){
 	// 创建指针并指定到第一个空节点
 	temp := twoWayLinkedList.next
 	// 指针反复指向下一个非空节点并打印
-	for{
-		if temp.Next == nil{
-			break
-		}
+	for temp.Next != nil{
 		temp = temp.Next
 		fmt.Print("[",temp.ID,"]=",temp.Data," ")
 	}

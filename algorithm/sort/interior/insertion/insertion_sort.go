@@ -14,10 +14,7 @@ func InsertionSort(array []int) []int {
 	for i:=1; i< len(array); i++ {
 		temp = array[i]
 		index = i-1
-		for {
-			if index<0 || temp > array[index] {
-				break
-			}
+		for index >= 0 && array[index] > temp{
 			array[index+1] = array[index]
 			index--
 		}

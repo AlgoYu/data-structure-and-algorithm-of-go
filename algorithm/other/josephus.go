@@ -35,10 +35,7 @@ func (josephus *Josephus) AddNode(node *People) {
 		return
 	}
 	temp := josephus.next
-	for{
-		if temp.Next == josephus.next{
-			break
-		}
+	for temp.Next != josephus.next{
 		temp = temp.Next
 	}
 	node.Next = temp.Next
@@ -54,10 +51,7 @@ func (josephus *Josephus) PrintLinkedList() {
 	}
 	temp := josephus.next
 	count := josephus.length
-	for{
-		if count == 0{
-			break
-		}
+	for count != 0{
 		fmt.Print("[",temp.Id,"]=",temp.Data," ")
 		temp = temp.Next
 		count--
@@ -72,10 +66,7 @@ func (josephus *Josephus) PrintJosephusCircular(start,count int) {
 	}
 	// 辅助指针先指向环形指针尾部
 	helper := josephus.next
-	for{
-		if helper.Next == josephus.next{
-			break
-		}
+	for helper.Next != josephus.next{
 		helper = helper.Next
 	}
 	// 当前指针指向起始节点，辅助指针跟随在后。
@@ -85,10 +76,7 @@ func (josephus *Josephus) PrintJosephusCircular(start,count int) {
 		helper = helper.Next
 	}
 	// 只要辅助指针不等于当前指针说明数据节点大于2
-	for{
-		if current == helper{
-			break
-		}
+	for current != helper{
 		// 当前指针指向需要出链表的节点，辅助指针跟随在后。
 		for i:= 0; i < count-1; i++{
 			current = current.Next

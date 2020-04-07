@@ -45,10 +45,7 @@ func (calculator *Calculator) CalculateExpression(expression string) int {
 		}
 	}
 	// 反复取出操作符栈和数值栈的数据并计算
-	for {
-		if calculator.operators.IsEmpty(){
-			break
-		}
+	for !calculator.operators.IsEmpty(){
 		num1 := calculator.nums.Pop()
 		num2 := calculator.nums.Pop()
 		operator := calculator.operators.Pop()

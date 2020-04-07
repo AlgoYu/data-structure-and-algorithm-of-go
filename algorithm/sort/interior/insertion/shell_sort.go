@@ -32,10 +32,7 @@ func ShellMoveSort(array []int) []int {
 		for i := half; i < len(array); i++ {
 			index = i - half
 			temp = array[i]
-			for{
-				if(index < 0 || temp > array[index]){
-					break
-				}
+			for index>=0 && temp < array[index]{
 				array[index+half] = array[index]
 				index -= half
 			}

@@ -43,10 +43,7 @@ func (singleLinkedList *SingleLinkedList) AddNode(node *SingleLinkedListNode)  {
 		return
 	}
 	temp := singleLinkedList.next
-	for{
-		if temp.Next == nil{
-			break
-		}
+	for temp.Next != nil{
 		temp = temp.Next
 	}
 	temp.Next = node
@@ -63,10 +60,7 @@ func (singleLinkedList *SingleLinkedList) AddOrderNode(node *SingleLinkedListNod
 	// 创建指针并指定到第一个空节点
 	temp := singleLinkedList.next
 	// 在链表中找到比当前需要插入的节点ID小的节点
-	for{
-		if temp.Next == nil || temp.Next.Id > node.Id {
-			break
-		}
+	for temp.Next != nil && temp.Next.Id < node.Id{
 		temp = temp.Next
 	}
 	// 插入节点
@@ -80,10 +74,7 @@ func (singleLinkedList *SingleLinkedList) DeleteNode(id int)  {
 	// 创建指针
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
-	for{
-		if temp.Next == nil || temp.Next.Id == id{
-			break
-		}
+	for temp.Next != nil && temp.Next.Id != id{
 		temp = temp.Next
 	}
 	// 判断下一个节点是否为空
@@ -98,10 +89,7 @@ func (singleLinkedList *SingleLinkedList) ModifyNode(node *SingleLinkedListNode)
 	// 创建指针
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
-	for{
-		if temp.Next == nil || temp.Next.Id == node.Id {
-			break
-		}
+	for temp.Next != nil && temp.Next.Id != node.Id{
 		temp = temp.Next
 	}
 	// 判断下一个节点是否为空
@@ -117,10 +105,7 @@ func (singleLinkedList *SingleLinkedList) GetNode(id int) *SingleLinkedListNode 
 	// 创建指针并指定到第一个空节点
 	temp := singleLinkedList.next
 	// 反复指向下一个非空且值不正确的节点
-	for{
-		if temp.Next == nil || temp.Next.Id ==id{
-			break
-		}
+	for temp.Next != nil && temp.Next.Id !=id{
 		temp = temp.Next
 	}
 	return temp.Next
@@ -136,10 +121,7 @@ func (singleLinkedList *SingleLinkedList) PrintLinkedList(){
 	// 创建指针并指定到第一个空节点
 	temp := singleLinkedList.next
 	// 指针反复指向下一个非空节点并打印
-	for{
-		if temp.Next == nil{
-			break
-		}
+	for temp.Next != nil{
 		temp = temp.Next
 		fmt.Print("[",temp.Id,"]=",temp.Data," ")
 	}
