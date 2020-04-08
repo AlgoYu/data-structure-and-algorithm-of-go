@@ -3,6 +3,7 @@ package main
 import (
 	"anydevelop.cn/algorithm/other"
 	"anydevelop.cn/algorithm/sort/interior/insertion"
+	"anydevelop.cn/algorithm/sort/interior/merge"
 	"anydevelop.cn/algorithm/sort/interior/selection"
 	"anydevelop.cn/algorithm/sort/interior/swap"
 	"anydevelop.cn/data_structure/linear"
@@ -50,6 +51,8 @@ func main()  {
 	//ShellSortTest()
 	// 快速排序测试
 	//QuickSortTest()
+	// 归并排序测试
+	MergeSortTest()
 }
 
 // 稀疏矩阵测试
@@ -491,7 +494,7 @@ func ShellSortTest()  {
 
 // 快速排序测试
 func QuickSortTest()  {
-	array := make([]int,80000)
+	array := make([]int,20)
 	rand.Seed(time.Now().UnixNano())
 	for i:=0; i< len(array); i++ {
 		array[i] = rand.Intn(500)
@@ -500,5 +503,19 @@ func QuickSortTest()  {
 	fmt.Println(array)
 	fmt.Println("快速排序后：")
 	swap.QuickSort(array,0, len(array)-1)
+	fmt.Println(array)
+}
+
+// 归并排序测试
+func MergeSortTest()  {
+	array := make([]int,20)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(500)
+	}
+	fmt.Println("排序前：")
+	fmt.Println(array)
+	fmt.Println("归并排序后：")
+	merge.MergeSort(array,0, len(array)-1,make([]int,20))
 	fmt.Println(array)
 }
