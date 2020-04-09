@@ -4,6 +4,7 @@ import (
 	"anydevelop.cn/algorithm/other"
 	"anydevelop.cn/algorithm/sort/interior/insertion"
 	"anydevelop.cn/algorithm/sort/interior/merge"
+	"anydevelop.cn/algorithm/sort/interior/radix"
 	"anydevelop.cn/algorithm/sort/interior/selection"
 	"anydevelop.cn/algorithm/sort/interior/swap"
 	"anydevelop.cn/data_structure/linear"
@@ -52,7 +53,9 @@ func main()  {
 	// 快速排序测试
 	//QuickSortTest()
 	// 归并排序测试
-	MergeSortTest()
+	//MergeSortTest()
+	// 基数排序测试
+	RadixSortTest()
 }
 
 // 稀疏矩阵测试
@@ -518,4 +521,17 @@ func MergeSortTest()  {
 	fmt.Println("归并排序后：")
 	merge.MergeSort(array,0, len(array)-1,make([]int,20))
 	fmt.Println(array)
+}
+
+// 基数排序测试
+func RadixSortTest()  {
+	array := make([]int,20)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(500)
+	}
+	fmt.Println("排序前：")
+	fmt.Println(array)
+	fmt.Println("基数排序后：")
+	fmt.Println(radix.RadixSort(array))
 }
