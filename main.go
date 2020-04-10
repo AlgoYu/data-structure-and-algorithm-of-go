@@ -2,6 +2,7 @@ package main
 
 import (
 	"anydevelop.cn/algorithm/other"
+	"anydevelop.cn/algorithm/search"
 	"anydevelop.cn/algorithm/sort/interior/insertion"
 	"anydevelop.cn/algorithm/sort/interior/merge"
 	"anydevelop.cn/algorithm/sort/interior/radix"
@@ -55,7 +56,9 @@ func main()  {
 	// 归并排序测试
 	//MergeSortTest()
 	// 基数排序测试
-	RadixSortTest()
+	//RadixSortTest()
+	// 线性查找测试
+	SeqSearchTest()
 }
 
 // 稀疏矩阵测试
@@ -534,4 +537,17 @@ func RadixSortTest()  {
 	fmt.Println(array)
 	fmt.Println("基数排序后：")
 	fmt.Println(radix.RadixSort(array))
+}
+
+// 线性查找测试
+func SeqSearchTest()  {
+	array := make([]int,20)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(10)
+	}
+	fmt.Println("切片：")
+	fmt.Println(array)
+	fmt.Println("搜索5下标")
+	fmt.Println(search.SeqSearch(array,5))
 }
