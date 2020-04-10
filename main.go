@@ -58,7 +58,9 @@ func main()  {
 	// 基数排序测试
 	//RadixSortTest()
 	// 线性查找测试
-	SeqSearchTest()
+	//SeqSearchTest()
+	// 二分查找测试
+	BinarySearchTest()
 }
 
 // 稀疏矩阵测试
@@ -548,6 +550,20 @@ func SeqSearchTest()  {
 	}
 	fmt.Println("切片：")
 	fmt.Println(array)
-	fmt.Println("搜索5下标")
+	fmt.Println("线性搜索5下标")
+	fmt.Println(search.SeqSearch(array,5))
+}
+
+// 线性查找测试
+func BinarySearchTest()  {
+	array := make([]int,20)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(10)
+	}
+	swap.QuickSort(array,0, len(array)-1)
+	fmt.Println("切片：")
+	fmt.Println(array)
+	fmt.Println("二分搜索5下标")
 	fmt.Println(search.SeqSearch(array,5))
 }
