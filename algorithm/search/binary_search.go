@@ -9,13 +9,13 @@
 package search
 
 // 二分查找
-func BinarySearch(data []int,value,left,right int) int {
+func BinarySearch(array []int,value,left,right int) int {
 	if left <= right{
 		middle := (left+right)/2
-		if data[middle] > value{
-			BinarySearch(data,value,left,middle-1)
-		}else if data[middle] < value{
-			BinarySearch(data,value,middle+1,right)
+		if array[middle] > value{
+			return BinarySearch(array,value,left,middle-1)
+		}else if array[middle] < value{
+			return BinarySearch(array,value,middle+1,right)
 		}else{
 			return middle
 		}

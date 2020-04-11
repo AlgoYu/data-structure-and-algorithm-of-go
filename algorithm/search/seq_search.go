@@ -8,9 +8,9 @@
 package search
 
 // 线性查找
-func SeqSearch(data []int,value int) int {
-	for i:=0; i < len(data); i++ {
-		if data[i] == value {
+func SeqSearch(array []int,value int) int {
+	for i:=0; i < len(array); i++ {
+		if array[i] == value {
 			return i
 		}
 	}
