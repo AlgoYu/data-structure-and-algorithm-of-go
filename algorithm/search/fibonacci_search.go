@@ -22,13 +22,13 @@ func GetFibonacciSequence(size int) []int {
 // 斐波那契查找
 func FibonacciSearch(array []int,value int) int {
 	low := 0
-	higt := len(array)-1
+	high := len(array)-1
 	// 黄金分割点
 	k := 0
 	// 获取斐波那契数列
 	fibonacciSequence := GetFibonacciSequence(len(array))
 	// 获取黄金分割点
-	for higt>fibonacciSequence[k] {
+	for high >fibonacciSequence[k] {
 		k++
 	}
 	// 避免值越界
@@ -41,19 +41,19 @@ func FibonacciSearch(array []int,value int) int {
 	}
 	// 使用黄金分割点查找数值
 	middle := 0
-	for higt >= low {
+	for high >= low {
 		middle = low + fibonacciSequence[k-1]-1
 		if value > temp[middle]{
 			low = middle+1
 			k-=2
 		}else if value < temp[middle]{
-			higt = middle-1
+			high = middle-1
 			k--
 		}else{
-			if higt >= middle{
+			if high >= middle{
 				return middle
 			}else{
-				return higt
+				return high
 			}
 		}
 	}

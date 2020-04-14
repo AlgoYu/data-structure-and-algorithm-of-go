@@ -64,7 +64,8 @@ func main()  {
 	// 插值查找测试
 	//InterpolationSearchTest()
 	// 斐波那契查找测试
-	FibonacciSearchTest()
+	//FibonacciSearchTest()
+	HashTableTest();
 }
 
 // 稀疏矩阵测试
@@ -598,4 +599,57 @@ func FibonacciSearchTest()  {
 	fmt.Println(array)
 	fmt.Println("斐波那契搜索5下标")
 	fmt.Println(search.FibonacciSearch(array,5))
+}
+
+// 散列表测试
+func HashTableTest()  {
+	loop := true
+	hashTable := new(linear.HashTable)
+	hashTable.Init(20)
+	rand.Seed(6666)
+	for{
+		if !loop{
+			break
+		}
+		fmt.Println("输入1为打印散列表")
+		fmt.Println("输入2为加入散列表节点")
+		fmt.Println("输入3为加入散列表有序节点")
+		fmt.Println("输入4为删除散列表节点")
+		fmt.Println("输入5为修改散列表节点")
+		fmt.Println("输入6为查找散列表节点")
+		fmt.Println("输入7为退出")
+		var input int
+		fmt.Scanf("%d", &input)
+		switch input {
+		case 1:
+			hashTable.PrintHashTable()
+		case 2:
+			var id int
+			fmt.Scanf("%d",&id)
+			hashTable.AddNode(&linear.HashTableNode{Id: id, Data:rand.Int()})
+		case 3:
+			var id int
+			fmt.Scanf("%d",&id)
+			hashTable.AddOrderNode(&linear.HashTableNode{Id: id, Data:rand.Int()})
+		case 4:
+			var id int
+			fmt.Scanf("%d",&id)
+			hashTable.DeleteNode(id)
+		case 5:
+			var id int
+			fmt.Scanf("%d",&id)
+			hashTable.ModifyNode(&linear.HashTableNode{Id: id, Data:rand.Int()})
+		case 6:
+			var id int
+			fmt.Scanf("%d",&id)
+			node := hashTable.GetNode(id)
+			if node==nil {
+				fmt.Println("没有找到这个节点")
+			}else{
+				fmt.Println("[",node.Id,"]=",node.Data)
+			}
+		case 7:
+			loop = false
+		}
+	}
 }
