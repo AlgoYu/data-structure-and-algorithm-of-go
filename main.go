@@ -9,6 +9,7 @@ import (
 	"anydevelop.cn/algorithm/sort/interior/selection"
 	"anydevelop.cn/algorithm/sort/interior/swap"
 	"anydevelop.cn/data_structure/linear"
+	"anydevelop.cn/data_structure/tree"
 	"fmt"
 	"math/rand"
 	"time"
@@ -65,7 +66,10 @@ func main()  {
 	//InterpolationSearchTest()
 	// 斐波那契查找测试
 	//FibonacciSearchTest()
-	HashTableTest();
+	// 散列表测试
+	//HashTableTest()
+	// 二叉树前中后序遍历测试
+	BinaryTreeTraversalTest()
 }
 
 // 稀疏矩阵测试
@@ -652,4 +656,26 @@ func HashTableTest()  {
 			loop = false
 		}
 	}
+}
+
+// 二叉树前中后序遍历测试
+func BinaryTreeTraversalTest()  {
+	root := &tree.BinaryTreeNode{Id: 1,Data: 100}
+	node1 := &tree.BinaryTreeNode{Id: 2,Data: 100}
+	node2 := &tree.BinaryTreeNode{Id: 3,Data: 100}
+	node3 := &tree.BinaryTreeNode{Id: 4,Data: 100}
+	node4 := &tree.BinaryTreeNode{Id: 5,Data: 100}
+	node5 := &tree.BinaryTreeNode{Id: 6,Data: 100}
+	root.Left = node1
+	root.Right = node5
+	node1.Left = node2
+	node1.Right = node4
+	node2.Left = node3
+	binaryTree := &tree.BinaryTree{Root: root}
+	fmt.Println("前序遍历：")
+	binaryTree.PreorderTraversal()
+	fmt.Println("中序遍历：")
+	binaryTree.InorderTraversal()
+	fmt.Println("后序遍历：")
+	binaryTree.PostorderTraversal()
 }
