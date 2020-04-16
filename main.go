@@ -69,7 +69,9 @@ func main()  {
 	// 散列表测试
 	//HashTableTest()
 	// 二叉树前中后序遍历测试
-	BinaryTreeTraversalTest()
+	//BinaryTreeTraversalTest()
+	// 二叉树前中后序搜索测试
+	BinaryTreeSearchTest()
 }
 
 // 稀疏矩阵测试
@@ -678,4 +680,26 @@ func BinaryTreeTraversalTest()  {
 	binaryTree.InorderTraversal()
 	fmt.Println("后序遍历：")
 	binaryTree.PostorderTraversal()
+}
+
+// 二叉树前中后序搜索测试
+func BinaryTreeSearchTest()  {
+	root := &tree.BinaryTreeNode{Id: 1,Data: 100}
+	node1 := &tree.BinaryTreeNode{Id: 2,Data: 100}
+	node2 := &tree.BinaryTreeNode{Id: 3,Data: 100}
+	node3 := &tree.BinaryTreeNode{Id: 4,Data: 100}
+	node4 := &tree.BinaryTreeNode{Id: 5,Data: 100}
+	node5 := &tree.BinaryTreeNode{Id: 6,Data: 100}
+	root.Left = node1
+	root.Right = node5
+	node1.Left = node2
+	node1.Right = node4
+	node2.Left = node3
+	binaryTree := &tree.BinaryTree{Root: root}
+	fmt.Println("前序搜索：")
+	fmt.Println(binaryTree.PreorderSearch(5))
+	fmt.Println("中序搜索：")
+	fmt.Println(binaryTree.PreorderSearch(5))
+	fmt.Println("后序搜索：")
+	fmt.Println(binaryTree.PreorderSearch(5))
 }
