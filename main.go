@@ -73,7 +73,9 @@ func main()  {
 	// 二叉树前中后序搜索测试
 	//BinaryTreeSearchTest()
 	// 二叉树删除测试
-	BinaryTreeDeleteTest()
+	//BinaryTreeDeleteTest()
+	// 顺序二叉树遍历测试
+	ArrayBinaryTreeTraversalTest()
 }
 
 // 稀疏矩阵测试
@@ -726,4 +728,19 @@ func BinaryTreeDeleteTest()  {
 	fmt.Println()
 	fmt.Println("前序遍历：")
 	binaryTree.PreorderTraversal()
+}
+
+// 顺序二叉树前中后序遍历测试
+func ArrayBinaryTreeTraversalTest()  {
+	data := []int{1,2,3,4,5,6,7}
+	arrayBinary := new(tree.ArrayBinaryTree)
+	arrayBinary.Init(data)
+	fmt.Println("前序遍历：")
+	arrayBinary.PreorderTraversal(0)
+	fmt.Println()
+	fmt.Println("中序遍历：")
+	arrayBinary.InorderTraversal(0)
+	fmt.Println()
+	fmt.Println("后序遍历：")
+	arrayBinary.PostorderTraversal(0)
 }
