@@ -2,7 +2,7 @@
 二叉树：二叉树是一种树形结构，每个节点最多只有两个子节点。
 主要思想：
 	1. 创建左右两个指针节点指针。
-	2. 使用左右节点指针完成前、中、后序遍历、搜索。
+	2. 使用左右节点指针完成前、中、后序遍历、搜索,删除。
 	3. 前序：父节点=>左子节点=>右子节点。
 	4. 中序：左子节点=>父节点=>右子节点。
 	5. 后序：左子节点=>右子节点=>父节点。
@@ -19,9 +19,27 @@ type BinaryTreeNode struct {
 	Right *BinaryTreeNode
 }
 
+// 删除节点
+func (binaryTreeNode *BinaryTreeNode) DeleteNode(id int)  {
+	if binaryTreeNode.Left!=nil && binaryTreeNode.Left.Id == id{
+		binaryTreeNode.Left = nil
+		return
+	}
+	if binaryTreeNode.Right!=nil && binaryTreeNode.Right.Id == id{
+		binaryTreeNode.Right = nil
+		return
+	}
+	if binaryTreeNode.Left!=nil{
+		binaryTreeNode.Left.DeleteNode(id)
+	}
+	if binaryTreeNode.Right!=nil{
+		binaryTreeNode.Right.DeleteNode(id)
+	}
+}
+
 // 前序遍历
 func (binaryTreeNode *BinaryTreeNode) PreorderTraversal()  {
-	fmt.Println(binaryTreeNode.Id)
+	fmt.Print(binaryTreeNode.Id,"=>")
 	if binaryTreeNode.Left != nil{
 		binaryTreeNode.Left.PreorderTraversal()
 	}
@@ -113,6 +131,17 @@ type BinaryTree struct {
 	Root *BinaryTreeNode
 }
 
+// 删除节点
+func (binaryTree *BinaryTree) DeleteNode(id int)  {
+	if binaryTree.Root == nil{
+		fmt.Println("This tree is empty!")
+	}else if binaryTree.Root.Id == id{
+		binaryTree.Root = nil
+	}else{
+		binaryTree.Root.DeleteNode(id)
+	}
+}
+
 // 前序遍历
 func (binaryTree *BinaryTree) PreorderTraversal()  {
 	if binaryTree.Root == nil{
@@ -140,7 +169,7 @@ func (binaryTree *BinaryTree) PostorderTraversal()  {
 	}
 }
 
-// 前序遍历
+// 前序搜索
 func (binaryTree *BinaryTree) PreorderSearch(id int) *BinaryTreeNode {
 	if binaryTree.Root == nil{
 		panic("This tree is empty!")
@@ -149,7 +178,7 @@ func (binaryTree *BinaryTree) PreorderSearch(id int) *BinaryTreeNode {
 	}
 }
 
-// 中序遍历
+// 中序搜索
 func (binaryTree *BinaryTree) InorderSearch(id int) *BinaryTreeNode {
 	if binaryTree.Root == nil{
 		panic("This tree is empty!")
@@ -158,7 +187,7 @@ func (binaryTree *BinaryTree) InorderSearch(id int) *BinaryTreeNode {
 	}
 }
 
-// 后序遍历
+// 后序搜索
 func (binaryTree *BinaryTree) PostorderSearch(id int) *BinaryTreeNode {
 	if binaryTree.Root == nil{
 		panic("This tree is empty!")
