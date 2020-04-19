@@ -53,7 +53,7 @@ func (binaryTreeNode *BinaryTreeNode) InorderTraversal()  {
 	if binaryTreeNode.Left != nil{
 		binaryTreeNode.Left.InorderTraversal()
 	}
-	fmt.Println(binaryTreeNode.Id)
+	fmt.Print(binaryTreeNode.Id,"=>")
 	if binaryTreeNode.Right != nil{
 		binaryTreeNode.Right.InorderTraversal()
 	}
@@ -67,7 +67,7 @@ func (binaryTreeNode *BinaryTreeNode) PostorderTraversal()  {
 	if binaryTreeNode.Right != nil{
 		binaryTreeNode.Right.PostorderTraversal()
 	}
-	fmt.Println(binaryTreeNode.Id)
+	fmt.Print(binaryTreeNode.Id,"=>")
 }
 
 // 前序搜索
