@@ -56,18 +56,18 @@ func (arrayBinaryTree *ArrayBinaryTree) InorderTraversal(index int)  {
 }
 
 // 前序遍历
-func (arrayBinaryTree *ArrayBinaryTree) PostorderTraversal(index int)  {
+func (arrayBinaryTree *ArrayBinaryTree) PostOrderTraversal(index int)  {
 	if arrayBinaryTree.binaryTree == nil || len(arrayBinaryTree.binaryTree)==0{
 		fmt.Println("This tree is empty!")
 		return
 	}
 	// 向左递归
 	if len(arrayBinaryTree.binaryTree) > 2*index+1{
-		arrayBinaryTree.PostorderTraversal(2*index+1)
+		arrayBinaryTree.PostOrderTraversal(2*index+1)
 	}
 	// 向右递归
 	if len(arrayBinaryTree.binaryTree) > 2*index+2{
-		arrayBinaryTree.PostorderTraversal(2*index+2)
+		arrayBinaryTree.PostOrderTraversal(2*index+2)
 	}
 	fmt.Print(arrayBinaryTree.binaryTree[index],"=>")
 }

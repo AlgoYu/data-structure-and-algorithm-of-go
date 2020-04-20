@@ -29,7 +29,7 @@
 ### 遍历-Traversal
 1. 先序遍历-Preorder Traversal
 2. 中序遍历-Inorder Traversal
-3. 后序遍历-Postorder Traversal
+3. 后序遍历-PostOrder Traversal
 4. 深度优先-Depth-First-Search
 5. 广度优先-Breadth First Search
 ### 求解-Solution

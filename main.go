@@ -77,7 +77,9 @@ func main()  {
 	// 顺序二叉树遍历测试
 	//ArrayBinaryTreeTraversalTest()
 	// 线索化二叉树测试
-	ThreadedBinaryTreeTest()
+	//ThreadedBinaryTreeTest()
+	// 线索化二叉树遍历测试
+	ThreadedBinaryTreeTraversalTest()
 }
 
 // 稀疏矩阵测试
@@ -685,7 +687,7 @@ func BinaryTreeTraversalTest()  {
 	fmt.Println("中序遍历：")
 	binaryTree.InorderTraversal()
 	fmt.Println("后序遍历：")
-	binaryTree.PostorderTraversal()
+	binaryTree.PostOrderTraversal()
 }
 
 // 二叉树前中后序搜索测试
@@ -744,7 +746,7 @@ func ArrayBinaryTreeTraversalTest()  {
 	arrayBinary.InorderTraversal(0)
 	fmt.Println()
 	fmt.Println("后序遍历：")
-	arrayBinary.PostorderTraversal(0)
+	arrayBinary.PostOrderTraversal(0)
 }
 
 // 二叉树前中后序遍历测试
@@ -781,12 +783,31 @@ func ThreadedBinaryTreeTest()  {
 	fmt.Println(node4.Right.Id)
 	fmt.Println(node5.Left.Id)*/
 	fmt.Println("后序遍历：")
-	threadedBinaryTree.PostorderTraversal()
+	threadedBinaryTree.PostOrderTraversal()
 	fmt.Println()
 	fmt.Println("后序线索化")
-	threadedBinaryTree.PostorderThreaded(root)
+	threadedBinaryTree.PostOrderThreaded(root)
 	fmt.Println(node3.Right.Id)
 	fmt.Println(node2.Right.Id)
 	fmt.Println(node4.Left.Id)
 	fmt.Println(node4.Right.Id)
+}
+
+// 线索化二叉树遍历测试
+func ThreadedBinaryTreeTraversalTest()  {
+	root := &tree.ThreadedBinaryTreeNode{Id: 1,Data: 100}
+	node1 := &tree.ThreadedBinaryTreeNode{Id: 2,Data: 100}
+	node2 := &tree.ThreadedBinaryTreeNode{Id: 3,Data: 100}
+	node3 := &tree.ThreadedBinaryTreeNode{Id: 4,Data: 100}
+	node4 := &tree.ThreadedBinaryTreeNode{Id: 5,Data: 100}
+	node5 := &tree.ThreadedBinaryTreeNode{Id: 6,Data: 100}
+	root.Left = node1
+	node1.Left = node2
+	node1.Right = node4
+	node2.Left = node3
+	root.Right = node5
+	threadedBinaryTree := &tree.ThreadedBinaryTree{Root: root}
+	fmt.Println("中序化遍历:")
+	threadedBinaryTree.InorderThreaded(root)
+	threadedBinaryTree.InorderThreadedTraversal()
 }

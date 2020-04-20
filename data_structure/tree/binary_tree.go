@@ -60,12 +60,12 @@ func (binaryTreeNode *BinaryTreeNode) InorderTraversal()  {
 }
 
 // 后序遍历
-func (binaryTreeNode *BinaryTreeNode) PostorderTraversal()  {
+func (binaryTreeNode *BinaryTreeNode) PostOrderTraversal()  {
 	if binaryTreeNode.Left != nil{
-		binaryTreeNode.Left.PostorderTraversal()
+		binaryTreeNode.Left.PostOrderTraversal()
 	}
 	if binaryTreeNode.Right != nil{
-		binaryTreeNode.Right.PostorderTraversal()
+		binaryTreeNode.Right.PostOrderTraversal()
 	}
 	fmt.Print(binaryTreeNode.Id,"=>")
 }
@@ -107,16 +107,16 @@ func (binaryTreeNode *BinaryTreeNode) InorderSearch(id int) *BinaryTreeNode {
 }
 
 // 后序搜索
-func (binaryTreeNode *BinaryTreeNode) PostorderSearch(id int) *BinaryTreeNode {
+func (binaryTreeNode *BinaryTreeNode) PostOrderSearch(id int) *BinaryTreeNode {
 	var node *BinaryTreeNode
 	if binaryTreeNode.Left != nil{
-		node = binaryTreeNode.Left.PostorderSearch(id)
+		node = binaryTreeNode.Left.PostOrderSearch(id)
 	}
 	if node!=nil{
 		return node
 	}
 	if binaryTreeNode.Right != nil{
-		node = binaryTreeNode.Right.PostorderSearch(id)
+		node = binaryTreeNode.Right.PostOrderSearch(id)
 	}
 	if node!=nil{
 		return node
@@ -161,11 +161,11 @@ func (binaryTree *BinaryTree) InorderTraversal()  {
 }
 
 // 后序遍历
-func (binaryTree *BinaryTree) PostorderTraversal()  {
+func (binaryTree *BinaryTree) PostOrderTraversal()  {
 	if binaryTree.Root == nil{
 		fmt.Println("This tree is empty!")
 	}else{
-		binaryTree.Root.PostorderTraversal()
+		binaryTree.Root.PostOrderTraversal()
 	}
 }
 
@@ -188,10 +188,10 @@ func (binaryTree *BinaryTree) InorderSearch(id int) *BinaryTreeNode {
 }
 
 // 后序搜索
-func (binaryTree *BinaryTree) PostorderSearch(id int) *BinaryTreeNode {
+func (binaryTree *BinaryTree) PostOrderSearch(id int) *BinaryTreeNode {
 	if binaryTree.Root == nil{
 		panic("This tree is empty!")
 	}else{
-		return binaryTree.Root.PostorderSearch(id)
+		return binaryTree.Root.PostOrderSearch(id)
 	}
 }

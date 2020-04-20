@@ -62,12 +62,12 @@ func (threadedBinaryTreeNode *ThreadedBinaryTreeNode) InorderTraversal()  {
 }
 
 // 后序遍历
-func (threadedBinaryTreeNode *ThreadedBinaryTreeNode) PostorderTraversal()  {
+func (threadedBinaryTreeNode *ThreadedBinaryTreeNode) PostOrderTraversal()  {
 	if threadedBinaryTreeNode.Left != nil{
-		threadedBinaryTreeNode.Left.PostorderTraversal()
+		threadedBinaryTreeNode.Left.PostOrderTraversal()
 	}
 	if threadedBinaryTreeNode.Right != nil{
-		threadedBinaryTreeNode.Right.PostorderTraversal()
+		threadedBinaryTreeNode.Right.PostOrderTraversal()
 	}
 	fmt.Print(threadedBinaryTreeNode.Id,"=>")
 }
@@ -109,16 +109,16 @@ func (threadedBinaryTreeNode *ThreadedBinaryTreeNode) InorderSearch(id int) *Thr
 }
 
 // 后序搜索
-func (threadedBinaryTreeNode *ThreadedBinaryTreeNode) PostorderSearch(id int) *ThreadedBinaryTreeNode {
+func (threadedBinaryTreeNode *ThreadedBinaryTreeNode) PostOrderSearch(id int) *ThreadedBinaryTreeNode {
 	var node *ThreadedBinaryTreeNode
 	if threadedBinaryTreeNode.Left != nil{
-		node = threadedBinaryTreeNode.Left.PostorderSearch(id)
+		node = threadedBinaryTreeNode.Left.PostOrderSearch(id)
 	}
 	if node!=nil{
 		return node
 	}
 	if threadedBinaryTreeNode.Right != nil{
-		node = threadedBinaryTreeNode.Right.PostorderSearch(id)
+		node = threadedBinaryTreeNode.Right.PostOrderSearch(id)
 	}
 	if node!=nil{
 		return node
@@ -179,15 +179,15 @@ func (threadedBinaryTree *ThreadedBinaryTree)InorderThreaded(node *ThreadedBinar
 }
 
 // 后序线索化
-func (threadedBinaryTree *ThreadedBinaryTree)PostorderThreaded(node *ThreadedBinaryTreeNode)  {
+func (threadedBinaryTree *ThreadedBinaryTree)PostOrderThreaded(node *ThreadedBinaryTreeNode)  {
 	if node==nil{
 		return
 	}
 	if !node.IsLeftThreaded{
-		threadedBinaryTree.PostorderThreaded(node.Left)
+		threadedBinaryTree.PostOrderThreaded(node.Left)
 	}
 	if !node.IsRightThreaded{
-		threadedBinaryTree.PostorderThreaded(node.Right)
+		threadedBinaryTree.PostOrderThreaded(node.Right)
 	}
 	if node.Left == nil{
 		node.Left = threadedBinaryTree.Pre
@@ -198,6 +198,22 @@ func (threadedBinaryTree *ThreadedBinaryTree)PostorderThreaded(node *ThreadedBin
 		threadedBinaryTree.Pre.IsRightThreaded = true
 	}
 	threadedBinaryTree.Pre = node
+}
+
+// 中序线索化遍历
+func (threadedBinaryTree *ThreadedBinaryTree)InorderThreadedTraversal()  {
+	temp := threadedBinaryTree.Root
+	for temp!=nil{
+		for !temp.IsLeftThreaded {
+			temp = temp.Left
+		}
+		fmt.Print(temp.Id,"=>")
+		for temp.IsRightThreaded {
+			temp = temp.Right
+			fmt.Print(temp.Id,"=>")
+		}
+		temp = temp.Right
+	}
 }
 
 // 删除节点
@@ -230,11 +246,11 @@ func (threadedBinaryTree *ThreadedBinaryTree) InorderTraversal()  {
 }
 
 // 后序遍历
-func (threadedBinaryTree *ThreadedBinaryTree) PostorderTraversal()  {
+func (threadedBinaryTree *ThreadedBinaryTree) PostOrderTraversal()  {
 	if threadedBinaryTree.Root == nil{
 		fmt.Println("This tree is empty!")
 	}else{
-		threadedBinaryTree.Root.PostorderTraversal()
+		threadedBinaryTree.Root.PostOrderTraversal()
 	}
 }
 
@@ -257,10 +273,10 @@ func (threadedBinaryTree *ThreadedBinaryTree) InorderSearch(id int) *ThreadedBin
 }
 
 // 后序搜索
-func (threadedBinaryTree *ThreadedBinaryTree) PostorderSearch(id int) *ThreadedBinaryTreeNode {
+func (threadedBinaryTree *ThreadedBinaryTree) PostOrderSearch(id int) *ThreadedBinaryTreeNode {
 	if threadedBinaryTree.Root == nil{
 		panic("This tree is empty!")
 	}else{
-		return threadedBinaryTree.Root.PostorderSearch(id)
+		return threadedBinaryTree.Root.PostOrderSearch(id)
 	}
 }
