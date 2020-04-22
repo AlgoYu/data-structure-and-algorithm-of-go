@@ -58,6 +58,8 @@ func main()  {
 	//MergeSortTest()
 	// 基数排序测试
 	//RadixSortTest()
+	// 堆排序测试
+	HeapSortTest()
 	// 线性查找测试
 	//SeqSearchTest()
 	// 二分查找测试
@@ -79,7 +81,7 @@ func main()  {
 	// 线索化二叉树测试
 	//ThreadedBinaryTreeTest()
 	// 线索化二叉树遍历测试
-	ThreadedBinaryTreeTraversalTest()
+	//ThreadedBinaryTreeTraversalTest()
 }
 
 // 稀疏矩阵测试
@@ -558,6 +560,19 @@ func RadixSortTest()  {
 	fmt.Println(array)
 	fmt.Println("基数排序后：")
 	fmt.Println(radix.RadixSort(array))
+}
+
+// 堆排序测试
+func HeapSortTest()  {
+	array := make([]int,20)
+	rand.Seed(time.Now().UnixNano())
+	for i:=0; i< len(array); i++ {
+		array[i] = rand.Intn(500)
+	}
+	fmt.Println("排序前：")
+	fmt.Println(array)
+	fmt.Println("堆排序后：")
+	fmt.Println(selection.HeapSort(array))
 }
 
 // 线性查找测试
