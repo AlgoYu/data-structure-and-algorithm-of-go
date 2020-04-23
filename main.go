@@ -59,7 +59,7 @@ func main()  {
 	// 基数排序测试
 	//RadixSortTest()
 	// 堆排序测试
-	HeapSortTest()
+	//HeapSortTest()
 	// 线性查找测试
 	//SeqSearchTest()
 	// 二分查找测试
@@ -82,6 +82,8 @@ func main()  {
 	//ThreadedBinaryTreeTest()
 	// 线索化二叉树遍历测试
 	//ThreadedBinaryTreeTraversalTest()
+	// 哈弗曼树测试
+	HuffmanTreeTest()
 }
 
 // 稀疏矩阵测试
@@ -825,4 +827,12 @@ func ThreadedBinaryTreeTraversalTest()  {
 	fmt.Println("中序化遍历:")
 	threadedBinaryTree.InorderThreaded(root)
 	threadedBinaryTree.InorderThreadedTraversal()
+}
+
+// 哈夫曼树测试
+func HuffmanTreeTest()  {
+	array := []int{13,7,8,3,29,6,1}
+	huffmanTree := new(tree.HuffmanTree)
+	huffmanTree.GetHuffmanTree(array)
+	huffmanTree.PreorderTraversal()
 }
