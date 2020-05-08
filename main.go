@@ -1,6 +1,7 @@
 package main
 
 import (
+	"anydevelop.cn/algorithm/compression"
 	"anydevelop.cn/algorithm/other"
 	"anydevelop.cn/algorithm/search"
 	"anydevelop.cn/algorithm/sort/interior/insertion"
@@ -82,8 +83,10 @@ func main()  {
 	//ThreadedBinaryTreeTest()
 	// 线索化二叉树遍历测试
 	//ThreadedBinaryTreeTraversalTest()
-	// 哈弗曼树测试
-	HuffmanTreeTest()
+	// 哈夫曼树测试
+	//HuffmanTreeTest()
+	// 哈夫曼编码测试
+	HuffmanCodingTest()
 }
 
 // 稀疏矩阵测试
@@ -835,4 +838,16 @@ func HuffmanTreeTest()  {
 	huffmanTree := new(tree.HuffmanTree)
 	huffmanTree.GetHuffmanTree(array)
 	huffmanTree.PreorderTraversal()
+}
+
+// 哈夫曼编码测试
+func HuffmanCodingTest()  {
+	str := "i like like like a golang do you like golang"
+	var data []byte = []byte(str)
+	fmt.Println("原始数据：",str)
+	huffmanCoding := compression.NewHuffmanCoding()
+	huffmanCompression := huffmanCoding.HuffmanCompression(data)
+	fmt.Println("哈夫曼编码：",huffmanCompression)
+	decompression := huffmanCoding.HuffmanDecompression(huffmanCompression)
+	fmt.Println("恢复数据：",string(decompression))
 }
