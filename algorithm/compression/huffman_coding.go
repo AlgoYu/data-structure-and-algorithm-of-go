@@ -10,7 +10,9 @@
 package compression
 
 import (
-	"fmt"
+	"encoding/gob"
+	"io/ioutil"
+	"os"
 	"strconv"
 )
 
@@ -29,6 +31,65 @@ func NewHuffmanCoding() *HuffmanCoding {
 	return &HuffmanCoding{HuffmanCode: make(map[byte]string)}
 }
 
+// 哈夫曼压缩文件
+func (huffmanCoding *HuffmanCoding) HuffmanCompressionFile(inputPath,outputPath string) {
+	bytes, err := ioutil.ReadFile(inputPath)
+	if err!=nil{
+		panic(err)
+	}
+	huffmanBytes := huffmanCoding.HuffmanCompression(bytes)
+	_,err4 := os.Stat(outputPath)
+	var output *os.File
+	var createErr error
+	if err4 != nil{
+		output, createErr = os.Create(outputPath)
+	}
+	if createErr != nil{
+		panic("Error to create file:"+outputPath)
+	}
+	defer output.Close()
+	encoder := gob.NewEncoder(output)
+	err2 := encoder.Encode(huffmanBytes)
+	if err2!=nil{
+		panic("Error to encode object.")
+	}
+	err3 := encoder.Encode(huffmanCoding.HuffmanCode)
+	if err3!=nil{
+		panic("Error to encode object.")
+	}
+}
+
+// 哈夫曼解压文件
+func (huffmanCoding *HuffmanCoding) HuffmanDecompressionFile(inputPath,outputPath string) {
+	open, err := os.Open(inputPath)
+	if err!=nil{
+		panic("Error to open "+inputPath)
+	}
+	defer open.Close()
+	decoder := gob.NewDecoder(open)
+	var huffmanCode []byte
+	err1 := decoder.Decode(&huffmanCode)
+	if err1!=nil{
+		panic("Error to decode object")
+	}
+	err2 := decoder.Decode(&huffmanCoding.HuffmanCode)
+	if err2!=nil{
+		panic("Error to decode object")
+	}
+	bytes := huffmanCoding.HuffmanDecompression(huffmanCode)
+	_,err4 := os.Stat(outputPath)
+	var output *os.File
+	var createErr error
+	if err4 != nil{
+		output, createErr = os.Create(outputPath)
+	}
+	if createErr != nil{
+		panic("Error to create file:"+outputPath)
+	}
+	defer output.Close()
+	output.Write(bytes)
+}
+
 // 哈夫曼压缩
 func (huffmanCoding *HuffmanCoding) HuffmanCompression(bytes []byte)[]byte{
 	huffmanCodingNodes := huffmanCoding.createNode(bytes)
@@ -38,7 +99,6 @@ func (huffmanCoding *HuffmanCoding) HuffmanCompression(bytes []byte)[]byte{
 	for i:=0; i < len(bytes); i++ {
 		huffmanStr += huffmanCoding.HuffmanCode[bytes[i]]
 	}
-	fmt.Println(huffmanStr)
 	huffmanCode := make([]byte,(len(huffmanStr)+15)/8)
 	index := 0
 	for i:=0; i < len(huffmanStr); i+=8 {
@@ -130,7 +190,6 @@ func (huffmanCoding *HuffmanCoding) HuffmanDecompression(bytes []byte) []byte {
 		}
 		str+=byteToBinaryString(bytes[i],0)
 	}
-	fmt.Println(str)
 	deHuffmanCode := make(map[string]byte)
 	for key,value := range huffmanCoding.HuffmanCode{
 		deHuffmanCode[value]=key

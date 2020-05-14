@@ -850,4 +850,8 @@ func HuffmanCodingTest()  {
 	fmt.Println("哈夫曼编码：",huffmanCompression)
 	decompression := huffmanCoding.HuffmanDecompression(huffmanCompression)
 	fmt.Println("恢复数据：",string(decompression))
+	fmt.Println("哈夫曼压缩文件：","/Users/anydev/Downloads/1.jpg => /Users/anydev/Downloads/huffman.zip")
+	huffmanCoding.HuffmanCompressionFile("/Users/anydev/Downloads/1.jpg","/Users/anydev/Downloads/huffman.zip")
+	fmt.Println("哈夫曼解压文件：","/Users/anydev/Downloads/huffman.zip => /Users/anydev/Downloads/source.jpg")
+	huffmanCoding.HuffmanDecompressionFile("/Users/anydev/Downloads/huffman.zip","/Users/anydev/Downloads/source.jpg")
 }
