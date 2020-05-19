@@ -86,7 +86,9 @@ func main()  {
 	// 哈夫曼树测试
 	//HuffmanTreeTest()
 	// 哈夫曼编码测试
-	HuffmanCodingTest()
+	//HuffmanCodingTest()
+	// 二叉排序树
+	BinarySortTreeTest()
 }
 
 // 稀疏矩阵测试
@@ -854,4 +856,27 @@ func HuffmanCodingTest()  {
 	huffmanCoding.HuffmanCompressionFile("/Users/anydev/Downloads/1.jpg","/Users/anydev/Downloads/huffman.zip")
 	fmt.Println("哈夫曼解压文件：","/Users/anydev/Downloads/huffman.zip => /Users/anydev/Downloads/source.jpg")
 	huffmanCoding.HuffmanDecompressionFile("/Users/anydev/Downloads/huffman.zip","/Users/anydev/Downloads/source.jpg")
+}
+
+// 二叉排序树测试
+func BinarySortTreeTest()  {
+	array := []int{3,5,9,1,2,7,6,9,4,11,15,23,31,-5,-1,-2,28,95,100,14}
+	binarySortTree := new(tree.BinarySortTree)
+	for _,value := range array{
+		binarySortTree.AddNode(&tree.BinarySortTreeNode{Value: value})
+	}
+	fmt.Println("中序遍历：")
+	binarySortTree.InorderTraversal()
+	fmt.Println()
+	fmt.Println("删除叶子节点：")
+	binarySortTree.DeleteNode(-2)
+	binarySortTree.InorderTraversal()
+	fmt.Println()
+	fmt.Println("删除单子树节点：")
+	binarySortTree.DeleteNode(-5)
+	binarySortTree.InorderTraversal()
+	fmt.Println()
+	fmt.Println("删除双子树节点：")
+	binarySortTree.DeleteNode(3)
+	binarySortTree.InorderTraversal()
 }
