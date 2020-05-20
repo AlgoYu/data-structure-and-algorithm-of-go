@@ -62,7 +62,13 @@ func (binarySortTree *BinarySortTree)DeleteNode(value int){
 				parentNode.Right = nil
 			}
 		}else if targetNode.Left==nil || targetNode.Right ==nil{
-			if targetNode.Left != nil{
+			if parentNode==nil{
+				if targetNode.Left!=nil{
+					binarySortTree.root = targetNode.Left
+				}else{
+					binarySortTree.root = targetNode.Right
+				}
+			}else if targetNode.Left != nil{
 				if parentNode.Left!=nil && parentNode.Left == targetNode{
 					parentNode.Left = targetNode.Left
 				}else{
