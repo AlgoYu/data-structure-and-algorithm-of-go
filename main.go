@@ -87,8 +87,10 @@ func main()  {
 	//HuffmanTreeTest()
 	// 哈夫曼编码测试
 	//HuffmanCodingTest()
-	// 二叉排序树
-	BinarySortTreeTest()
+	// 二叉排序树测试
+	//BinarySortTreeTest()
+	// ALV树测试
+	ALVTreeTest()
 }
 
 // 稀疏矩阵测试
@@ -879,4 +881,18 @@ func BinarySortTreeTest()  {
 	fmt.Println("删除双子树节点：")
 	binarySortTree.DeleteNode(3)
 	binarySortTree.InorderTraversal()
+}
+
+// ALV树测试
+func ALVTreeTest()  {
+	array := []int{10,11,7,6,8,9}
+	alvTree := new(tree.ALVTree)
+	for _,value := range array{
+		alvTree.AddNode(&tree.ALVTreeNode{Value: value})
+	}
+	fmt.Println("中序遍历：")
+	alvTree.InorderTraversal()
+	fmt.Println("\n获取树高度：",alvTree.GetHeight())
+	fmt.Println("\n获取左子树高度：",alvTree.GetLeftHeight())
+	fmt.Println("\n获取右子树高度：",alvTree.GetRightHeight())
 }
