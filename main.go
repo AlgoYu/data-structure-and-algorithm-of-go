@@ -9,6 +9,7 @@ import (
 	"anydevelop.cn/algorithm/sort/interior/radix"
 	"anydevelop.cn/algorithm/sort/interior/selection"
 	"anydevelop.cn/algorithm/sort/interior/swap"
+	"anydevelop.cn/data_structure/graphic"
 	"anydevelop.cn/data_structure/linear"
 	"anydevelop.cn/data_structure/tree"
 	"fmt"
@@ -90,7 +91,9 @@ func main()  {
 	// 二叉排序树测试
 	//BinarySortTreeTest()
 	// ALV树测试
-	ALVTreeTest()
+	//ALVTreeTest()
+	// 邻接矩阵图测试
+	AdjacencyMatrixTest()
 }
 
 // 稀疏矩阵测试
@@ -895,4 +898,19 @@ func ALVTreeTest()  {
 	fmt.Println("\n获取树高度：",alvTree.GetHeight())
 	fmt.Println("\n获取左子树高度：",alvTree.GetLeftHeight())
 	fmt.Println("\n获取右子树高度：",alvTree.GetRightHeight())
+}
+
+// 邻接矩阵图测试
+func AdjacencyMatrixTest()  {
+	array := [...]string{"A","B","C","D","E"}
+	adjacencyMatrix := graphic.NewAdjacencyMatrix(len(array))
+	for i:=0; i < len(array);i++ {
+		adjacencyMatrix.AddNode(array[i])
+	}
+	adjacencyMatrix.AddEdge(0,1,1)
+	adjacencyMatrix.AddEdge(0,2,1)
+	adjacencyMatrix.AddEdge(1,2,1)
+	adjacencyMatrix.AddEdge(1,3,1)
+	adjacencyMatrix.AddEdge(1,4,1)
+	adjacencyMatrix.PrintGraphic()
 }
