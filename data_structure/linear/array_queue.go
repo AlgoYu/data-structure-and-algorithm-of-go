@@ -24,6 +24,13 @@ type ArrayQueue struct {
 	tail int
 }
 
+func NewArrayQueue(size int) *ArrayQueue {
+	queue := &ArrayQueue{size: size}
+	queue.queue = make([]int,size)
+	queue.front, queue.tail = -1,-1
+	return queue
+}
+
 // 初始化队列
 func (queue *ArrayQueue) InitQueue(size int){
 	queue.size = size
@@ -42,7 +49,7 @@ func (queue *ArrayQueue) IsFull()bool{
 }
 
 // 加入数据到队列尾部
-func (queue *ArrayQueue) AddQueue(data int) {
+func (queue *ArrayQueue) Add(data int) {
 	if queue.IsFull() {
 		fmt.Println("Can't add queue because queue is full")
 		return
@@ -52,7 +59,7 @@ func (queue *ArrayQueue) AddQueue(data int) {
 }
 
 // 从队列头提取数据
-func (queue *ArrayQueue) OutQueue()int{
+func (queue *ArrayQueue) Pop()int{
 	if queue.IsEmpty(){
 		panic("Can't add queue because queue is full")
 	}

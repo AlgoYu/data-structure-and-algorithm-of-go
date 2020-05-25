@@ -25,11 +25,11 @@ type ArrayCircularQueue struct {
 	tail int
 }
 
-// 初始化队列
-func (queue *ArrayCircularQueue) InitQueue(size int){
-	queue.size = size
+func NewArrayCircularQueue(size int) *ArrayCircularQueue {
+	queue := &ArrayCircularQueue{size: size}
 	queue.queue = make([]int,size)
 	queue.front, queue.tail = 0,0
+	return queue
 }
 
 // 判断队列是否为空

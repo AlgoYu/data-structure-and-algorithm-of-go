@@ -118,8 +118,7 @@ func SparseMatrixTest()  {
 // 队列测试
 func ArrayQueueTest(){
 	loop := true
-	arrayQueue := new(linear.ArrayQueue)
-	arrayQueue.InitQueue(5)
+	arrayQueue := linear.NewArrayQueue(5)
 	for{
 		if !loop{
 			break
@@ -137,9 +136,9 @@ func ArrayQueueTest(){
 		case 2:
 			var data int
 			fmt.Scanf("%d",&data)
-			arrayQueue.AddQueue(data)
+			arrayQueue.Add(data)
 		case 3:
-			fmt.Println(arrayQueue.OutQueue())
+			fmt.Println(arrayQueue.Pop())
 		case 4:
 			fmt.Println(arrayQueue.PrintCurrentQueueHead())
 		case 5:
@@ -151,8 +150,7 @@ func ArrayQueueTest(){
 // 环形队列测试
 func ArrayCircularQueueTest(){
 	loop := true
-	arrayCircularQueue := new(linear.ArrayCircularQueue)
-	arrayCircularQueue.InitQueue(5)
+	arrayCircularQueue := linear.NewArrayCircularQueue(5)
 	for{
 		if !loop{
 			break
@@ -913,4 +911,9 @@ func AdjacencyMatrixTest()  {
 	adjacencyMatrix.AddEdge(1,3,1)
 	adjacencyMatrix.AddEdge(1,4,1)
 	adjacencyMatrix.PrintGraphic()
+	fmt.Println("深度优先遍历：")
+	adjacencyMatrix.DFS()
+	fmt.Println("\n广度优先遍历：")
+	adjacencyMatrix.CleanVisit()
+	adjacencyMatrix.BFS()
 }
