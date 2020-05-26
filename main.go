@@ -65,7 +65,7 @@ func main()  {
 	// 线性查找测试
 	//SeqSearchTest()
 	// 二分查找测试
-	//BinarySearchTest()
+	BinarySearchTest()
 	// 插值查找测试
 	//InterpolationSearchTest()
 	// 斐波那契查找测试
@@ -93,7 +93,7 @@ func main()  {
 	// ALV树测试
 	//ALVTreeTest()
 	// 邻接矩阵图测试
-	AdjacencyMatrixTest()
+	//AdjacencyMatrixTest()
 }
 
 // 稀疏矩阵测试
@@ -609,7 +609,9 @@ func BinarySearchTest()  {
 	fmt.Println("切片：")
 	fmt.Println(array)
 	fmt.Println("二分搜索5下标")
-	fmt.Println(search.BinarySearch(array,5,0, len(array)-1))
+	fmt.Println(search.BinaryRecursiveSearch(array,5,0, len(array)-1))
+	fmt.Println("二分非递归搜索5下标")
+	fmt.Println(search.BinarySearch(array,5))
 }
 
 // 插值查找测试

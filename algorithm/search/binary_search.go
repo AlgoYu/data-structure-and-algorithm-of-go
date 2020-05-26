@@ -9,15 +9,33 @@
 package search
 
 // 二分查找
-func BinarySearch(array []int,value,left,right int) int {
+func BinaryRecursiveSearch(array []int,value,left,right int) int {
 	if left <= right{
 		middle := (left+right)/2
 		if array[middle] > value{
-			return BinarySearch(array,value,left,middle-1)
+			return BinaryRecursiveSearch(array,value,left,middle-1)
 		}else if array[middle] < value{
-			return BinarySearch(array,value,middle+1,right)
+			return BinaryRecursiveSearch(array,value,middle+1,right)
 		}else{
 			return middle
+		}
+	}
+	return -1
+}
+
+// 二分非递归查找
+func BinarySearch(array []int,target int) int {
+	left := 0
+	right := len(array)-1
+	var middle int
+	for left <= right {
+		middle = (left+right)/2
+		if array[middle]==target{
+			return middle
+		}else if array[middle] > target{
+			right = middle-1
+		}else{
+			left = middle+1
 		}
 	}
 	return -1
