@@ -95,7 +95,9 @@ func main()  {
 	// 邻接矩阵图测试
 	//AdjacencyMatrixTest()
 	// 汉诺塔测试
-	TowerOfHanoiTest()
+	//TowerOfHanoiTest()
+	// 背包问题测试
+	KnapsackProblemTest()
 }
 
 // 稀疏矩阵测试
@@ -925,4 +927,19 @@ func AdjacencyMatrixTest()  {
 // 汉诺塔测试
 func TowerOfHanoiTest() {
 	other.TowerOfHanoi(3,'a','b','c')
+}
+
+// 背包问题测试
+func KnapsackProblemTest()  {
+	article := make([][]int,3)
+	for i:=0; i< len(article); i++ {
+		article[i] = make([]int,2)
+	}
+	article[0][0] = 1
+	article[0][1] = 1500
+	article[1][0] = 4
+	article[1][1] = 3000
+	article[2][0] = 3
+	article[2][1] = 2000
+	other.KnapsackProblem(article,4)
 }
