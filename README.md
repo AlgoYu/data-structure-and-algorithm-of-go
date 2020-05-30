@@ -1,5 +1,5 @@
 # 数据结构与算法-Data structure and algorithm
-![Data structure and algorithm](http://img.mp.itc.cn/upload/20170420/d91afdda62a4452fa65174ea66e04995_th.jpeg)
+![Data structure and algorithm](http://i2.tiimg.com/835/54bae66e78e11cd1.jpg)
 > 后续会持续更新
 ## 算法-Algorithm chapter
 ### 无分类-No classification
@@ -73,4 +73,4 @@
 
 **如果这个项目有帮助到您就请作者喝一杯咖啡吧！**
 
-<img src="https://wx3.sinaimg.cn/large/0065B4vHgy1g7mv8zdyvwj3078078jr5.jpg" width="20%"/>
+<img src="http://i2.tiimg.com/835/8b24f140ff13849b.jpg" width="20%"/>
