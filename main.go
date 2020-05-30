@@ -65,7 +65,7 @@ func main()  {
 	// 线性查找测试
 	//SeqSearchTest()
 	// 二分查找测试
-	BinarySearchTest()
+	//BinarySearchTest()
 	// 插值查找测试
 	//InterpolationSearchTest()
 	// 斐波那契查找测试
@@ -94,6 +94,8 @@ func main()  {
 	//ALVTreeTest()
 	// 邻接矩阵图测试
 	//AdjacencyMatrixTest()
+	// 汉诺塔测试
+	TowerOfHanoiTest()
 }
 
 // 稀疏矩阵测试
@@ -918,4 +920,9 @@ func AdjacencyMatrixTest()  {
 	fmt.Println("\n广度优先遍历：")
 	adjacencyMatrix.CleanVisit()
 	adjacencyMatrix.BFS()
+}
+
+// 汉诺塔测试
+func TowerOfHanoiTest() {
+	other.TowerOfHanoi(3,'a','b','c')
 }
