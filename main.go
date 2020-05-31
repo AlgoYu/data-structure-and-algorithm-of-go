@@ -97,7 +97,9 @@ func main()  {
 	// 汉诺塔测试
 	//TowerOfHanoiTest()
 	// 背包问题测试
-	KnapsackProblemTest()
+	//KnapsackProblemTest()
+	// 暴力匹配算法测试
+	BruteForceMatchTest()
 }
 
 // 稀疏矩阵测试
@@ -942,4 +944,11 @@ func KnapsackProblemTest()  {
 	article[2][0] = 3
 	article[2][1] = 2000
 	other.KnapsackProblem(article,4)
+}
+
+// 暴力匹配算法测试
+func BruteForceMatchTest() {
+	source := "I like Golang"
+	match := "Golang"
+	fmt.Println(other.BruteForceMatch(source,match))
 }
