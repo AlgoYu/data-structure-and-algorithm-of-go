@@ -1,5 +1,5 @@
 # 数据结构与算法-Data structure and algorithm
-![Data structure and algorithm](http://i2.tiimg.com/835/54bae66e78e11cd1.jpg)
+![Data structure and algorithm](https://thumbnail0.baidupcs.com/thumbnail/5599a309au2813bd0d1ae8dbf14ad13e?fid=1347594197-250528-206682664147429&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-3Tj4jf0YH6tsItc6BnwAZZAGYuU%3d&expires=8h&chkbd=0&chkv=0&dp-logid=3547607945029015642&dp-callid=0&time=1591023600&size=c10000_u10000&quality=90&vuk=1347594197&ft=image)
 > 后续会持续更新
 ## 算法-Algorithm chapter
 ### 无分类-No classification
@@ -73,4 +73,4 @@
 
 **如果这个项目有帮助到您就请作者喝一杯咖啡吧！**
 
-<img src="http://i2.tiimg.com/835/8b24f140ff13849b.jpg" width="20%"/>
+<img src="https://thumbnail0.baidupcs.com/thumbnail/8a07b4270i448d80a64426cc76b84974?fid=1347594197-250528-144570596466445&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-aRoEZsomCPFMY%2fr92yeKezrN7XM%3d&expires=8h&chkbd=0&chkv=0&dp-logid=3547709294384178281&dp-callid=0&time=1591023600&size=c10000_u10000&quality=90&vuk=1347594197&ft=image" width="20%"/>
