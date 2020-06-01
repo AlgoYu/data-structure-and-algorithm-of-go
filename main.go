@@ -950,5 +950,5 @@ func KnapsackProblemTest()  {
 func BruteForceMatchTest() {
 	source := "I like Golang"
 	match := "Golang"
-	fmt.Println(other.BruteForceMatch(source,match))
+	fmt.Println(search.BruteForceMatch(source,match))
 }
