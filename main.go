@@ -99,7 +99,9 @@ func main()  {
 	// 背包问题测试
 	//KnapsackProblemTest()
 	// 暴力匹配算法测试
-	BruteForceMatchTest()
+	//BruteForceMatchTest()
+	// 覆盖地区测试
+	CoverAreaTest()
 }
 
 // 稀疏矩阵测试
@@ -951,4 +953,38 @@ func BruteForceMatchTest() {
 	source := "I like Golang"
 	match := "Golang"
 	fmt.Println(search.BruteForceMatch(source,match))
+}
+
+// 覆盖地区测试
+func CoverAreaTest()  {
+	channel := make(map[string][]string)
+	one := make([]string,3)
+	one[0] = "北京"
+	one[1] = "上海"
+	one[2] = "深圳"
+	channel["channel-1"] = one
+	two := make([]string,3)
+	two[0] = "杭州"
+	two[1] = "深圳"
+	two[2] = "大连"
+	channel["channel-2"] = two
+	three := make([]string,2)
+	three[0] = "大连"
+	three[1] = "北京"
+	channel["channel-3"] = three
+	four := make([]string,3)
+	four[0] = "杭州"
+	four[1] = "东莞"
+	four[2] = "珠海"
+	channel["channel-4"] = four
+	allArea := make([]string,7)
+	allArea[0] = "北京"
+	allArea[1] = "上海"
+	allArea[2] = "深圳"
+	allArea[3] = "杭州"
+	allArea[4] = "大连"
+	allArea[5] = "珠海"
+	allArea[6] = "东莞"
+	selects := other.CoverArea(allArea, channel)
+	fmt.Println(selects)
 }
