@@ -101,7 +101,9 @@ func main()  {
 	// 暴力匹配算法测试
 	//BruteForceMatchTest()
 	// 覆盖地区测试
-	CoverAreaTest()
+	//CoverAreaTest()
+	// 修路问题测试
+	MendRoadTest()
 }
 
 // 稀疏矩阵测试
@@ -987,4 +989,21 @@ func CoverAreaTest()  {
 	allArea[6] = "东莞"
 	selects := other.CoverArea(allArea, channel)
 	fmt.Println(selects)
+}
+
+// 修路问题测试
+func MendRoadTest()  {
+	matrix := [][]int{
+		{10000,5,7,10000,10000,10000,2},
+		{5,10000,10000,9,10000,10000,3},
+		{7,10000,10000,10000,8,10000,10000},
+		{10000,9,10000,10000,10000,4,10000},
+		{10000,10000,8,10000,10000,5,4},
+		{10000,10000,10000,4,5,10000,6},
+		{2,3,10000,10000,4,5,10000},
+	}
+	nodes := []rune{'A','B','C','D','E','F','G'}
+	graph := other.CreateGraph(len(nodes), nodes, matrix)
+	graph.PrintGraph()
+	other.MinTree(graph,0)
 }

@@ -1,7 +1,7 @@
 # 数据结构与算法-Data structure and algorithm
-![Data structure and algorithm](https://thumbnail0.baidupcs.com/thumbnail/5599a309au2813bd0d1ae8dbf14ad13e?fid=1347594197-250528-206682664147429&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-3Tj4jf0YH6tsItc6BnwAZZAGYuU%3d&expires=8h&chkbd=0&chkv=0&dp-logid=3547607945029015642&dp-callid=0&time=1591023600&size=c10000_u10000&quality=90&vuk=1347594197&ft=image)
+![Data structure and algorithm](http://picture-bad.anydevelop.cn/blog/54bae66e78e11cd1.jpg)
 > 后续会持续更新
-## 算法-Algorithm chapter
+## 算法篇-Algorithm chapter
 ### 无分类-No classification
 1. 普利姆算法-Prim Algorithm
 2. 克鲁斯卡尔算法-Kruskal Algorithm
@@ -29,7 +29,7 @@
 ### 遍历-Traversal
 1. 先序遍历-Preorder Traversal
 2. 中序遍历-Inorder Traversal
-3. 后序遍历-PostOrder Traversal
+3. 后序遍历-postOrder Traversal
 4. 深度优先-Depth-First-Search
 5. 广度优先-Breadth First Search
 ### 求解-Solution
@@ -37,7 +37,7 @@
 2. 动态规划-Dynamic Programming
 ### 压缩-Compression
 1. 哈夫曼编码-Huffman Coding
-## 数据结构-Data structure
+## 数据结构篇-Data structure chapter
 ### 线性结构-Linear structure
 1. 稀疏矩阵-Sparse Matrix
 2. 队列-Queue
@@ -73,4 +73,4 @@
 
 **如果这个项目有帮助到您就请作者喝一杯咖啡吧！**
 
-<img src="https://thumbnail0.baidupcs.com/thumbnail/8a07b4270i448d80a64426cc76b84974?fid=1347594197-250528-144570596466445&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-aRoEZsomCPFMY%2fr92yeKezrN7XM%3d&expires=8h&chkbd=0&chkv=0&dp-logid=3547709294384178281&dp-callid=0&time=1591023600&size=c10000_u10000&quality=90&vuk=1347594197&ft=image" width="20%"/>
+<img src="http://picture-bad.anydevelop.cn/blog/0065B4vHgy1g7mv8zdyvwj3078078jr5.jpg" width="20%"/>
