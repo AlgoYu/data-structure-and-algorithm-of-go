@@ -2,6 +2,7 @@ package main
 
 import (
 	"anydevelop.cn/algorithm/compression"
+	"anydevelop.cn/algorithm/interview"
 	"anydevelop.cn/algorithm/other"
 	"anydevelop.cn/algorithm/search"
 	"anydevelop.cn/algorithm/sort/interior/insertion"
@@ -105,7 +106,9 @@ func main() {
 	// 修路问题测试
 	//MendRoadTest()
 	// 公交站问题测试
-	BusStationTest()
+	//BusStationTest()
+	// 字符数字排序测试
+	AlphanumericSortTest()
 }
 
 // 稀疏矩阵测试
@@ -1025,4 +1028,12 @@ func BusStationTest() {
 	graph := other.CreateBGraph(nodes, matrix)
 	graph.PrintGraph()
 	other.Kruskal(graph)
+}
+
+// 字符数字排序测试
+func AlphanumericSortTest() {
+	array := []string{"B3", "D2", "F1", "A9", "D12", "A2", "C1", "Z0", "B1"}
+	fmt.Println("排序前：", array)
+	interview.AlphanumericSort(array)
+	fmt.Println("排序后:", array)
 }
