@@ -107,8 +107,10 @@ func main() {
 	//MendRoadTest()
 	// 公交站问题测试
 	//BusStationTest()
+	// Dijkstra算法测试
+	DijkstraAlgorithmTest()
 	// 字符数字排序测试
-	AlphanumericSortTest()
+	//AlphanumericSortTest()
 }
 
 // 稀疏矩阵测试
@@ -1028,6 +1030,26 @@ func BusStationTest() {
 	graph := other.CreateBGraph(nodes, matrix)
 	graph.PrintGraph()
 	other.Kruskal(graph)
+}
+
+// Dijkstra算法测试
+func DijkstraAlgorithmTest() {
+	node := []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G'}
+	n := 65535
+	matrix := [][]int{
+		{n, 5, 7, n, n, n, 2},
+		{5, n, n, 9, n, n, 3},
+		{7, n, n, n, 8, n, n},
+		{n, 9, n, n, n, 4, n},
+		{n, n, 8, n, n, 5, 4},
+		{n, n, n, 4, 5, n, 6},
+		{2, 3, n, n, 4, 6, n},
+	}
+	dijkstraGraph := other.DijkstraGraph{Nodes: node, Matrix: matrix}
+	fmt.Println("显示图：")
+	dijkstraGraph.PrintGraph()
+	fmt.Println("从G点出发计算到达各点的最短路径：")
+	fmt.Println(other.Dijkstra(&dijkstraGraph, 6))
 }
 
 // 字符数字排序测试
