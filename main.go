@@ -108,7 +108,9 @@ func main() {
 	// 公交站问题测试
 	//BusStationTest()
 	// Dijkstra算法测试
-	DijkstraAlgorithmTest()
+	//DijkstraAlgorithmTest()
+	// Floyd算法测试
+	FloydAlgorithmTest()
 	// 字符数字排序测试
 	//AlphanumericSortTest()
 }
@@ -1050,6 +1052,27 @@ func DijkstraAlgorithmTest() {
 	dijkstraGraph.PrintGraph()
 	fmt.Println("从G点出发计算到达各点的最短路径：")
 	fmt.Println(other.Dijkstra(&dijkstraGraph, 6))
+}
+
+// Floyd算法测试
+func FloydAlgorithmTest() {
+	nodes := []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G'}
+	n := 65535
+	matrix := [][]int{
+		{0, 5, 7, n, n, n, 2},
+		{5, 0, n, 9, n, n, 3},
+		{7, n, 0, n, 8, n, n},
+		{n, 9, n, 0, n, 4, n},
+		{n, n, 8, n, 0, 5, 4},
+		{n, n, n, 4, 5, 0, 6},
+		{2, 3, n, n, 4, 6, 0},
+	}
+	floydAlgorithm := other.NewFloydAlgorithm(nodes, matrix)
+	fmt.Println("打印原始矩阵：")
+	floydAlgorithm.PrintGraph()
+	fmt.Println("经过佛洛依德计算：")
+	floydAlgorithm.Floyd()
+	floydAlgorithm.PrintGraph()
 }
 
 // 字符数字排序测试
