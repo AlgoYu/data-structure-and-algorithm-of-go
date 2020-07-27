@@ -110,7 +110,9 @@ func main() {
 	// Dijkstra算法测试
 	//DijkstraAlgorithmTest()
 	// Floyd算法测试
-	FloydAlgorithmTest()
+	//FloydAlgorithmTest()
+	// 骑士周游算法测试
+	KnightTourProblemTest()
 	// 字符数字排序测试
 	//AlphanumericSortTest()
 }
@@ -1073,6 +1075,21 @@ func FloydAlgorithmTest() {
 	fmt.Println("经过佛洛依德计算：")
 	floydAlgorithm.Floyd()
 	floydAlgorithm.PrintGraph()
+}
+
+// 骑士周游算法测试
+func KnightTourProblemTest()  {
+	x,y := 8,8
+	chessboard := make([][]int,x)
+	for i:=0; i< len(chessboard); i++ {
+		chessboard[i] = make([]int,y)
+	}
+	row,column := 4,1
+	knightTourProblem := other.NewKnightTourProblem(x, y)
+	knightTourProblem.TraverseChessboard(chessboard,row-1,column-1,1)
+	for i:=0; i< len(chessboard);i++ {
+		fmt.Println(chessboard[i])
+	}
 }
 
 // 字符数字排序测试
