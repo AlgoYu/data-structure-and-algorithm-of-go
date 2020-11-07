@@ -1,5 +1,5 @@
 # 数据结构与算法-Data structure and algorithm
-![Data structure and algorithm](http://picture-bad.anydevelop.cn/blog/54bae66e78e11cd1.jpg)
+![Data structure and algorithm](https://store.machine-geek.cn/0005.jpg)
 > 后续会持续更新
 ## 算法篇-Algorithm chapter
 ### 无分类-No classification
@@ -69,8 +69,8 @@
 ## 关于作者
 
 喜欢的话就**Star**一下吧！  
-也可以逛逛[作者博客](http://blog.anydevelop.cn/)
+也可以逛逛[作者博客](http://blog.machine-geek.cn/)
 
 **如果这个项目有帮助到您就请作者喝一杯咖啡吧！**
 
-<img src="http://picture-bad.anydevelop.cn/blog/0065B4vHgy1g7mv8zdyvwj3078078jr5.jpg" width="20%"/>
+<img src="https://store.machine-geek.cn/0012.jpg" width="20%"/>
